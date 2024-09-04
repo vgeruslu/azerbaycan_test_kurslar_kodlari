@@ -1,0 +1,135 @@
+(//td[@aria-describedby= (//td[@aria-label='Column Nömrəsi'])/@id and not (@class = 'dx-editor-cell')])[1]
+
+//*[@class = 'dx-icon dx-icon-close'][1]
+
+
+
+//*[contains(text(), 'Sosial məzuniyyətdə olan işçinin əvəzinə götürülür')]//ancestor::app-checkbox
+
+//*[@id= //*[contains(text(), 'Struktur bölmə')]/parent::div/parent::div//input[@type != 'hidden']/@aria-owns]//*[@role='option'][1]
+
+//*[@id= //*[contains(text(), 'Struktur bölmə')]/parent::div/parent::div//input[@type != 'hidden']//ancestor::dx-drop-down-box/@aria-owns]
+
+//*[text()= 'Sil']
+
+
+//td[text()= 'Sil']
+
+/parent::tr//app-cell-delete
+
+//*[@id= //*[contains(text(), 'Şəhər/Rayon')]/parent::div/parent::div//input[@type != 'hidden']/@aria-owns]//*[@role='option'][1]
+
+
+//*[@id= //input[contains(@id, '_ListEmployee')]/@aria-owns]//*[@role='option'][1]
+
+//*[contains(text(), 'VÖEN')]/ancestor::div[contains(@class,'form')]//input
+
+
+//*[contains(text(), 'Təşkilatın adı')]/parent::label
+
+
+
+//*[text()= 'Əlavə et']
+
+
+//section[@id='user-name-password']//*[text()[contains(., 'Daxil ol')]]
+
+
+
+//*[contains(text(), 'Təşkilatın adı')]
+
+//td[@aria-label='Sütun Sənədin tarixi']['id']
+
+
+//td[@aria-describedby = 'dx-col-223']
+
+//button[text()[contains(., 'Hesabatı göstər')]]
+
+//*[text()[contains(., 'Təşkilata görə')]]/parent::label
+
+
+
+//*[text()[contains(., 'Başlanğıc tarixi')]]/parent::div
+
+//*[@id= //input[contains(@id, '_OrganizationId')]/@aria-owns]//*[text()[contains(., 'Prosys MMC')]]
+
+//*[text()='Tamam' and not(ancestor::*[contains(@class,'dx-state-invisible')])]
+    
+
+
+//*[text()='Təşkilatı seçin']
+
+
+//*[@id= 'lkAcc']
+
+//*[@class = 'dx-datagrid-content']//tr[@role= 'row']//td[@aria-describedby='dx-col-165']
+
+//*[@id[contains(., 'dt1')]]
+
+
+
+
+//*[@id= //input[contains(@id, '_ListEmployee')]/@aria-owns]//*[text()[contains(., 'Hamısını seçin')]]
+
+//*[@class[contains(., 'dx-datagrid-search-panel')]]//input
+
+
+
+//*[@id= 'name' [not(contains(@style,'display:none'))]]
+
+
+
+
+
+//td[text()[contains(., '2024/03/23-13:30')]]/parent::tr[@aria-rowindex='1']
+
+
+//tr[@class[contains(., 'dx-column-lines dx-master-detail-row')]]
+
+//td[text()[contains(., '7735')]]/parent::tr//td[@class[contains(., 'dx-command-expand')]]
+
+//*[@id= //div[@class[contains(., 'dx-item-selected')]]//*[@aria-rowindex='1']//td[@aria-colindex='1']//input[@type != 'hidden']/@aria-owns]//*[@role='option'][1]
+
+//*[@id=//div[@class[contains(., 'dx-item-selected')]]//*[@aria-rowindex='1']//td[@aria-colindex='1']//input[@type != 'hidden']]//*[@role='option'][1]
+
+
+//div[@class[contains(., 'dx-item-selected')]]//div[contains(@title, 'Yeni sətir')]
+//tbody[@role="presentation"]
+
+//div[@class[contains(., 'dx-item-selected')]]//*[@aria-rowindex='1']//a[@title='Sil']
+
+//div[@class[contains(., 'dx-item-selected')]]//input
+
+
+
+//*[@id= //input[contains(@id, '_ListEmployee')]/@aria-owns]//*[@role='option'][1]
+
+//*[@id=//div[contains(@id, 'cmbTypeId')]//input[@type != 'hidden']/@aria-owns]//*[@role='option'][1]
+
+
+ 
+
+
+
+
+//*[@id='Classifications']//tr//*[text()[contains(., 'Z-Test otomasyon-')]]/parent::tr//a[@title='Redaktə et']
+
+//*[@id='Classifications']//tr//*[text()[contains(., '17.12.2024')]]/parent::tr//a[@title='Redaktə et']
+
+
+//*[@aria-rowindex='1']//a[@title='Sil']
+
+//*[@id='Classifications']//tr//*[text()[contains(., 'Test otomasyon')]]/parent::*
+
+
+//*[@id[contains(.,'DocumentNumber') ]]
+
+
+text()[contains(., 'REDAKTƏ OLMUŞ')]
+
+//tr[aria-rowindex='1']//*[text()='EUR']
+//input[@id[contains(.,'ExchangeRate')]]
+
+//*[@id= //input[contains(@id, 'SecondCurrency')]/@aria-owns]//*[@role='option']//*[text()='USD']
+
+//div[@aria-label='Saxla']//*[@text='Saxla']

@@ -1,0 +1,85 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "markup.gauge.comment",
+                "settings": {
+                    "foreground": "#888888", // Comments
+                }
+            },
+            {
+                "scope": "markup.list.unnumbered.markdown",
+                "settings": {
+                    "foreground": "#6fafc2", // Step text
+                }
+            },
+            {
+                "scope": "beginning.punctuation.definition.list.markdown",
+                "settings": {
+                    "foreground": "#6fafc2", //  Step indentifier (*)
+                }
+            },
+            {
+                "scope": "markup.gauge.step.params",
+                "settings": {
+                    "foreground": "#ae81ff", // Step parameters
+                }
+            },
+            {
+                "scope": "markup.gauge.concept.params",
+                "settings": {
+                    "foreground": "#d8c3ff", // Concept parameters
+                }
+            },
+            {
+                "scope": "markup.gauge.tags.keyword",
+                "settings": {
+                    "foreground": "#ff4689", // Tags keyword
+                }
+            },
+            {
+                "scope": "markup.gauge.tags.tags",
+                "settings": {
+                    "foreground": "#fc88b2", // Tags
+                }
+            },
+            {
+                "scope": "markup.gauge.table.params",
+                "settings": {
+                    "foreground": "#ae81ff", // Table parameters
+                }
+            },
+            {
+                "scope": "markup.gauge.table.borders",
+                "settings": {
+                    "foreground": "#8349f0", // Table borders
+                }
+            },
+            {
+                "scope": "markup.gauge.table.header_separator",
+                "settings": {
+                    "foreground": "#8349f0", // Table header separator
+                }
+            },
+            {
+                "scope": "markup.heading.markdown",
+                "settings": {
+                    "foreground": "#84ef66", // Spec & Scenario headings
+                }
+            },
+            {
+                "scope": "meta.other.valid-bracket.markdown",
+                "settings": {
+                    "foreground": "#32be49", // Spec & Scenario headings
+                }
+            },
+        ]
+    },
+    "files.associations": {
+        "*.spec": "gauge",
+        "*.cpt": "gauge"
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500
+}
+

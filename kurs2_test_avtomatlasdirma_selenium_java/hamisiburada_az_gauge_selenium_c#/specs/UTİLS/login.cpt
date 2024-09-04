@@ -1,0 +1,19 @@
+# Daxil-ol, bu istifadəçi ilə: Adı=<username> Şifrə=<password> 
+
+//
+    * Obyektə vur (XPath ilə): "//*[@name='userName' and @placeholder='İstifadəçi adı']"
+    * Mətn yaz, klaviatura ilə: <username>
+
+    * Obyektə vur (XPath ilə): "//*[@name='password' and @placeholder='Şifrə']"
+    * Mətn yaz, klaviatura ilə: <password>
+    * "1" saniyə gözlə
+
+//
+// MP3 oyna: "Düyməyə vururam"
+
+    * Obyektə vur (XPath ilə): "//section[@id='user-name-password']//*[text()[contains(., 'Daxil ol')]]"
+
+    * OBYEKTİN səhifəyə gəldiyini gözlə: obyekt_XPath = "//span[text()= 'Təşkilati struktur']"; saniyə_gözlə = "20"; gəlsə_səs_faylı = ""; gəlməzsə_səs_faylı= "Xata. Sistemin əsas ekranı açılmadı"
+
+    
+// gəlsə_səs_faylı = "Sistemin əsas ekranı açıldı"
