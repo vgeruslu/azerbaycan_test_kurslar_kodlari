@@ -1,0 +1,5 @@
+# Uİ obyektlərin locatorları load et - Məhsul axtarmaq
+//
+    * Dəyişgən və dəyərini yadda saxla: "Məhsul axtar xanası" = "//*[@name = 'name' and not (contains(@class, 'search-bar-input-mobile'))]"
+
+    * Dəyişgən və dəyərini yadda saxla: "Axtar düyməsi" = "(//*[@class = 'input-group-append-overlay search_button'])[1]"

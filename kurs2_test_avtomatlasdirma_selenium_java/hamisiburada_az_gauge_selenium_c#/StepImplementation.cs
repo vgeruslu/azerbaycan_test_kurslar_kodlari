@@ -390,9 +390,12 @@ namespace netcore.template
             System.Drawing.Size fullScreenSize = driver.Manage().Window.Size; 
 
             if (CONSTANTlar.NUM_OF_MONITORS == 2 ) {
-                 System.Drawing.Size size = driver.Manage().Window.Size; 
+                driver.Manage().Window.Position = new System.Drawing.Point(-fullScreenSize.Width, 0);
+                driver.Manage().Window.Maximize();
+                //Saniyə_Gözlə(2);
+
+                System.Drawing.Size size = driver.Manage().Window.Size; 
                 size.Width = (int) (size.Width * 0.75);
-                driver.Manage().Window.Position = new System.Drawing.Point(0, 0);
                 driver.Manage().Window.Size = size;
             }
             else if  (CONSTANTlar.NUM_OF_MONITORS == 1 ) {
@@ -3252,259 +3255,42 @@ Console.WriteLine("AutoIt_test_faylını_calışdır... ");
         //------------------------------------------------------------
         readonly int _______SUT_SPESIFIK_FONKSIYALAR;
         
-        [Step("YOXLA (TC 1.2.5): Griddəki sətirlərin hamısı seçilən təşkilata aid olduqlarını")]
-        public void YOXLA_TC_1_2_5_Griddəki_sətirlərin_hamısı_seçilən_təşkilata_aid_olduqlarını()   {
-            TestLogaYaz("----------------------------");
-            TestLogaYaz("YOXLA (TC 1.2.5): Griddəki sətirlərin hamısı seçilən təşkilata aid olduqlarını");
+        [Step("YOXLA: Ekrandakı bütöv məhsulların adında bu yazı olmalı: <məhsul_adı>")]
+        public void YOXLA_Ekrandakı_bütöv_məhsulların_adında_bu_yazı_olmalı(String məhsul_adı)   {
+            IList<IWebElement> ekrandakı_bütöv_məhsullar = driver.FindElements(
+                    By.XPath("//*[@id= 'ajax-products']//div[contains (@class, 'product-card')] "));
 
-            String ekranda_seçilən_təşkilatin_adi = driver.FindElement(By.XPath("//*[@id= //*[contains(text(), 'Təşkilatı seçin')]/parent::div/parent::div//input[@type != 'hidden']/@aria-owns]//*[@role='option'][1]//div[2]")).Text;
+            // ekrandakı_bütöv_məhsullar.Count()
+            for (int məhsul_index = 0; məhsul_index < 3; məhsul_index++) {
+                IWebElement məhsul = ekrandakı_bütöv_məhsullar.ElementAt(məhsul_index);
 
-            TestLogaYaz("ekranda_seçilən_təşkilatin_adi = " + ekranda_seçilən_təşkilatin_adi);
+                /*IWebElement məhsul_qiymeti_span = driver.FindElement(
+                        By.XPath("(//div[contains (@class, 'product-card')]//div[contains (@class, 'product-price')]//span)[" + (məhsul_index + 1) + "]"));*/
+                if (!IsElementVisibleInViewport(məhsul))
+                    ((IJavaScriptExecutor) driver).ExecuteScript(
+                            "arguments[0].scrollIntoView();", məhsul);
 
-            // "Təşkilatı seçin" LABEL'e vur, ki acilan siyahi baglansin
+                OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(məhsul, CONSTANTlar.UI_DA_YAZI_YOXLAMA_KƏNAR_RƏNGI);
 
-            OBYEKTƏ_vur_XPath_ilə("//*[text()='Təşkilatı seçin']");
+                String məhsul_başlığı = driver.FindElement(
+                        By.XPath("(//div[contains (@class, 'product-card')]//div[contains (@class, 'product-title1')]//a)[" + (məhsul_index + 1) + "]")).GetAttribute("innerHTML");
 
-            // təşkilat_sutununun id="dx-col-X" deyerini cixard
-            IWebElement təşkilat_sutununun_headeri = driver.FindElement(By.XPath("//td[@aria-label='Column Təşkilat']"));
+                TestLogaYaz("məhsul_başlığı = " + məhsul_başlığı); 
 
-            String təşkilat_sutununun_ID_dx_col_X_deyeri =  təşkilat_sutununun_headeri.GetAttribute("id"); 
-            TestLogaYaz("təşkilat_sutununun_ID_dx_col_X_deyer = " + təşkilat_sutununun_ID_dx_col_X_deyeri);
+                if (məhsul_başlığı.ToUpper().Contains(məhsul_adı.ToUpper())){ 
+                        TestLogaYaz("TEST KEÇTI. Bu məhsulun adında, axtarılan kəlimə var");
 
-            //
-            IList<IWebElement> griddəki_sətirlərin_təşkilat_sutunu = driver.FindElements(By.XPath("//*[@class = 'dx-datagrid-content']//tr[@role= 'row']//td[@aria-describedby='" + təşkilat_sutununun_ID_dx_col_X_deyeri + "']"));
-
-            TestLogaYaz("DataGrid griddəki_sətirlərin_təşkilat_sutunu sayısı = " + griddəki_sətirlərin_təşkilat_sutunu.Count);
-
-            foreach (IWebElement sətirin_təşkilat_sutunu in griddəki_sətirlərin_təşkilat_sutunu) {
-                    //TestLogaYaz("sətirin_təşkilat_sutunu = " +  sətirin_təşkilat_sutunu.Text);
-
-                   // TestLogaYaz("LEN of sətirin_təşkilat_sutunu = " + sətirin_təşkilat_sutunu.Text.Length);
-
-                    TestLogaYaz("LEN of ekranda_seçilən_təşkilatin_adi = " + ekranda_seçilən_təşkilatin_adi.Length);
-
-                    if (sətirin_təşkilat_sutunu.Text.Equals(ekranda_seçilən_təşkilatin_adi)) {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(sətirin_təşkilat_sutunu, "green");
-
-                        TestLogaYaz("✓ TEST KEÇTI: Bu sətirdəki təşkilatın adı, ekrandakı seçilən təşkilat adı ilə birdir");
-
-                        MP3_oyna("1.2.5-TEST KEÇTI. Bu sətirdəki təşkilatın adı, ekrandakı seçilən təşkilat adı ilə birdir");
-                    }
-                    else {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(sətirin_təşkilat_sutunu, "red");
-
-                        MP3_oyna("1.2.5-XATA. Bu sətirdəki təşkilatın adı, ekrandakı seçilən təşkilat adı ilə eyni deyil");
-
-                        Xatayı_Xata_Faylına_Yaz("XƏTA: 1.2.5-XATA. Bu sətirdəki təşkilatın adı, ekrandakı seçilən təşkilat adı ilə eyni deyil");
-                    }
-            }
-            TestLogaYaz("----------------------------");
-        }
-
-        [Step("YOXLA-TC 4.4.1-Bütov sətirlərin ayı <gozlenen_ay> və illəri <gozlenen_il> olmalı")]
-        public void YOXLA_TC_4_4_1_Bütov_sətirlərin_ayı_bu_və_illəri_bu_olmalı(String gozlenen_ay, String gozlenen_il)   {
-            TestLogaYaz("YOXLA-TC 4.4.1-Bütov sətirlərin ayı <ay> və illəri <il> olmalı");
-            TestLogaYaz("gozlenen_ay  = " + gozlenen_ay);
-            TestLogaYaz("gozlenen_il  = " + gozlenen_il);
-
-            // ay ve il sutununun id'sini cixard
-            IWebElement ay_sutunu, il_sutunu;
-            String ay_sutunu_id,  il_sutunu_id; 
-            try {
-                ay_sutunu = driver.FindElement(By.XPath("//td[@aria-label='Column Ay']"));  
-                ay_sutunu_id = ay_sutunu.GetAttribute("id");
-                TestLogaYaz("ay_sutunu_id  = " + ay_sutunu_id);
-
-                il_sutunu = driver.FindElement(By.XPath("//td[@aria-label='Column İl']"));  
-                il_sutunu_id = il_sutunu.GetAttribute("id");
-                TestLogaYaz("il_sutunu_id  = " + il_sutunu_id);
-            }
-            catch (Exception e) {
-                MP3_oyna("Ciddi xata yaşandı. Detaylar fayla yazıldı. Bu test durur.");
-                Xatayı_Xata_Faylına_Yaz("YOXLA_TC_4_4_1_Bütov_sətirlərin_ayı_bu_və_illəri_bu_olmalı ---  ay ve il sutununun id'sini cixardmaq mumkun olmadi. XETA = " + e.Message);
-                return;
-            }
-
-            IList<IWebElement> griddəki_butov_sətirlərin_aylari = driver.FindElements(By.XPath("//*[@class = 'dx-datagrid-content']//tr[@role= 'row']//td[@aria-describedby='"+ ay_sutunu_id + "']"));   
-
-            IList<IWebElement> griddəki_butov_sətirlərin_illeri = driver.FindElements(By.XPath("//*[@class = 'dx-datagrid-content']//tr[@role= 'row']//td[@aria-describedby='"+ il_sutunu_id + "']"));  
-            
-            if (griddəki_butov_sətirlərin_aylari.Count == 0) {
-                MP3_oyna("Seçilən filtrlər ilə, heç sətir yükləməyib. Çünki verilənlər bazasında birbaşa yoxlaya bilmirəm, filtrə xüsusiyyətinin düzgün çalışdığını deyə bilmərəm");
-                return;
-            }
-            else {
-                // bütov sətirlərin ayı <ay> və illəri <il> olmalı
-                int sətir_index = 1;
-                foreach (IWebElement ay_xanasi in griddəki_butov_sətirlərin_aylari) {
-                    TestLogaYaz("Sətir  = " + sətir_index);
-
-                    String setirdeki_ay_deyeri = ay_xanasi.GetAttribute("innerHTML");
-                    
-                    String setirdeki_il_deyeri = griddəki_butov_sətirlərin_illeri[sətir_index - 1].GetAttribute("innerHTML");
-
-                    TestLogaYaz("ay_deyeri  = " + setirdeki_ay_deyeri);
-                    TestLogaYaz("il_deyeri  = " + setirdeki_il_deyeri);
-
-                    if (setirdeki_ay_deyeri.CompareTo(gozlenen_ay) == 0) {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(ay_xanasi, "green");
-                        MP3_oyna("Test uğurla keçdi");
-                    }
-                    else {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(ay_xanasi, "red");
-                        MP3_oyna("Test uğursuz oldu");
-                        Xatayı_Xata_Faylına_Yaz("TC 4.4.1-XATA. Setirdeki_ay_deyeri (" + setirdeki_ay_deyeri + "), filtredeki secilen ay (" + gozlenen_ay+ ") ile bir degil");
-                    }
-                    ////
-                    if (setirdeki_il_deyeri.CompareTo(gozlenen_il) == 0) {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(griddəki_butov_sətirlərin_illeri[sətir_index - 1], "green");
-                        MP3_oyna("Test uğurla keçdi");
-                    }
-                    else {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(griddəki_butov_sətirlərin_illeri[sətir_index - 1], "red");
-
-                        MP3_oyna("Test uğursuz oldu");
-                        Xatayı_Xata_Faylına_Yaz("TC 4.4.1-XATA. Setirdeki_il_deyeri (" + setirdeki_il_deyeri + "), filtredeki secilen il (" + gozlenen_il+ ") ile bir degil");
-                    }
-                    
-                    sətir_index ++;
+                        MP3_oyna("BU SİSTEMİN-TEST KEÇTI. Bu məhsulun adında, axtarılan kəlimə var");
                 }
-            }
-        }
-    
+                else { 
+                        TestLogaYaz("XƏTA. Bu məhsulun adında, axtarılan kəlimə YOXDUR");
 
-        [Step("YOXLA-TC 1.2.6-Dataların bütov xanaların axtarışı")]
-        public void YOXLA_TC_1_2_6_Dataların_bütov_xanaların_axtarışı ()   {
-            TestLogaYaz("----------------------------");
-            TestLogaYaz("TC 1.2.6");
-
-            // YOXLA: Ekranda ən az bir sətrin olduğunu
-            IList<IWebElement> griddəki_sətirləri = driver.FindElements(By.XPath("//*[@class = 'dx-datagrid-content']//tr[@role= 'row']"));
-
-            TestLogaYaz("griddəki_sətirləri sayısı = " + griddəki_sətirləri.Count);
-
-            if (griddəki_sətirləri.Count >= 1) 
-                ; // ok
-            else {
-                MP3_oyna("1.2.6-XATA. Bu testi çalışdırma üçün, ekranda ən az bir sətrin olmalı");
-
-                Xatayı_Xata_Faylına_Yaz("XƏTA: 1.2.6- Bu testi çalışdırma üçün, ekranda ən az bir sətrin olmalı");
-
-                driver.Quit();
-                Assert.Fail();
-            }
-
-            // birinci setrin ADI xanasını oxu
-            IWebElement ad_sutununun_headeri  = driver.FindElement(By.XPath("//td[@aria-label='Column Adı']"));
-            
-            String ad_sutununun_ID_dx_col_X_deyeri =  ad_sutununun_headeri.GetAttribute("id"); 
-            TestLogaYaz("ad_sutununun_ID_dx_col_X_deyeri = " + ad_sutununun_ID_dx_col_X_deyeri);
-
-            //
-            String birinci_setrin_ADI_xanasi = driver.FindElement(By.XPath("(//*[@class = 'dx-datagrid-content']//tr[@role= 'row']//td[@aria-describedby='" + ad_sutununun_ID_dx_col_X_deyeri + "'])[1]")).Text;
-
-            String axtarış_kəlməsi  = birinci_setrin_ADI_xanasi;
-            TestLogaYaz("axtarış_kəlməsi / birinci_setrin_ADI_xanasi = " + birinci_setrin_ADI_xanasi);
-
-            // VUR: Mətn qutusu - Yuxarı sağda, ve onda deyeri yaz
-
-            OBYEKTƏ_vur_XPath_ilə("//*[@class[contains(., 'dx-datagrid-search-panel')]]//input");
-
-            Mətn_yaz_klaviatura_ilə(axtarış_kəlməsi);
-
-            Saniyə_Gözlə(3); // ki GRID yazdigimiz axtaris kelimesi ile filter olsun
-
-            // YOXLAMA: butov setirlere bax, ve her setirde, axtaris kelimesinin en azi bir xanada oldugunu yoxla
-
-            IList<IWebElement> griddəki_butov_sətirlər = driver.FindElements(By.XPath("//*[@class = 'dx-datagrid-content']//tr[@role= 'row']"));
-
-            TestLogaYaz("griddəki_butov_sətirlər sayısı = " + griddəki_butov_sətirlər.Count);
-
-            axtarış_kəlməsi = axtarış_kəlməsi.ToUpper();
-
-            foreach (IWebElement sətir in griddəki_butov_sətirlər) {
-                    String sətrin_texti = sətir.Text.ToUpper();
-
-                    TestLogaYaz("sətrin_texti = " + sətrin_texti);
-
-                    if (sətrin_texti.Contains(axtarış_kəlməsi)) {
-                        
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(sətir, "green");
-
-                        TestLogaYaz("✓ TEST KEÇTI: Axtarış kəlməsi, bu sətirdə tapıldı");
-
-                        MP3_oyna("TEST KEÇDİ. Axtarış kəlməsi, bu sətirdə tapıldı" );                            
-                    }
-                    else {
-                        OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(sətir, "red");
-
-                        MP3_oyna("1.2.6-XATA. Axtarış kəlməsi, bu sətirdə tapılmadı. Yəni, bu sətir, axtarış nəticəsində olmamalı idi.");
-
-                        Xatayı_Xata_Faylına_Yaz("1.2.6-XATA. Axtarış kəlməsi, bu sətirdə tapılmadı. Yəni, bu sətir, axtarış nəticəsində olmamalı idi. Axtarış_kəlməsi = " + axtarış_kəlməsi + " --- Sətir.Text = " + sətir.Text);
-                    }
-            }
-            TestLogaYaz("----------------------------");
-        }
-        
-[Step("YOXLA-11.4.2 üçün-Ekranda göstərilən bütöv sətirlərin təyin olmuş tarixlər filtrinə düzgün filtri olduqlarını yoxla")]
-public void YOXLA_11_4_2_üçün() {
-    // Başlıq Pencerenin ID-sini əldə edirik
-    IWebElement sütun_header_sənəd_tarixi = driver.FindElement(By.XPath("//td[@aria-label='Column Tarix']"));
-    String sütun_header_sənəd_tarixi_ID_si = sütun_header_sənəd_tarixi.GetAttribute("id");
-    
-    // Tarix pencerelerinin XPath-ni təyin edirik (search-box'u istisna edərək)
-    String bütöv_sətirlərin_tarix_sutunu_XPathi = "//div[contains(@class, 'dx-datagrid-rowsview')]//tr[not(ancestor::div[contains(@class, 'search-box')])]//td[@aria-describedby='" + sütun_header_sənəd_tarixi_ID_si + "']";
-    IList<IWebElement> bütöv_sətirlərin_tarix_sutunu = driver.FindElements(By.XPath(bütöv_sətirlərin_tarix_sutunu_XPathi));
-
-    if (bütöv_sətirlərin_tarix_sutunu.Count == 0) {
-        MP3_oyna("XATA. Testin davam etməsi üçün, siyahıda ən azı bir element olmalı. Test otomasyon feyl olub və durmaq məcburiyyətindədir.");
-        return;
-    }
-
-    // Tarixləri təyin edirik
-    DateTime başlanğıc_tarix, bitmə_tarix;
-    if (!DateTime.TryParseExact(Əsnək_String_Dəyişgənlər_Cədvəli["Bu gündən 60 gün əvvəlki tarix"], "dd.MM.yyyy", null, DateTimeStyles.None, out başlanğıc_tarix) ||
-        !DateTime.TryParseExact(Əsnək_String_Dəyişgənlər_Cədvəli["Bu günün tarixi"], "dd.MM.yyyy", null, DateTimeStyles.None, out bitmə_tarix))
-    {
-        MP3_oyna("Xata");
-        return;
-    }
-
-    // Gün səviyyəsində müqayisə etmək üçün tarixləri yalnız gün, ay və il səviyyəsinə endiririk
-    başlanğıc_tarix = başlanğıc_tarix.Date;
-    bitmə_tarix = bitmə_tarix.Date;
-
-    bool bütün_sənədlər_düzgündür = true;
-
-    // Tarixləri yoxlayırıq
-    foreach (IWebElement hər_sətrin_tarix_hücrəsi_TD in bütöv_sətirlərin_tarix_sutunu) {
-        DateTime sətirdəki_tarix;
-        if (!DateTime.TryParseExact(hər_sətrin_tarix_hücrəsi_TD.Text, "dd.MM.yyyy HH:mm", null, DateTimeStyles.None, out sətirdəki_tarix)) {
-            MP3_oyna("Xata");
-            bütün_sənədlər_düzgündür = false;
-            break;
+                        MP3_oyna("BU SİSTEMİN-XƏTA. Bu məhsulun adında, axtarılan kəlimə YOXDUR");
+                }
+            }            
         }
 
-        // Gün səviyyəsində müqayisə edirik
-        sətirdəki_tarix = sətirdəki_tarix.Date;
 
-        if (sətirdəki_tarix < başlanğıc_tarix || sətirdəki_tarix > bitmə_tarix) {
-            bütün_sənədlər_düzgündür = false;
-            OBYEKTƏ_fokuslaş_və_kənarin_rəngləndir(hər_sətrin_tarix_hücrəsi_TD, "red");
-            break;
-        }
-    }
-    // Nəticə
-    if (bütün_sənədlər_düzgündür) {
-        MP3_oyna("Test passed-SUCCESS"); // Uğurlu halda oynatılacaq MP3 faylı
-        MP3_oyna("Test uğurla keçdi"); 
-        Console.WriteLine("Test passed.");
-    } else {
-        MP3_oyna("13.10.1-XATA. Bu sətirdəki tarix, filtrlənmiş başlanğıc və bitmə tarixlərin arasında deyil"); // Xəta MP3 faylı
-        Console.WriteLine("Test failed.");
-        Xatayı_Xata_Faylına_Yaz("XƏTA: YOXLA-13.10.1 üçün-Ekranda göstərilən bütöv sətirlərin təyin olmuş tarixlər filtrinə düzgün filtri olduqlarını yoxla");
-    }
-}
 
         readonly int _______SADƏCƏ_TEST_KOD_ÇAĞIRILAN_FONKSIYALAR;
 
