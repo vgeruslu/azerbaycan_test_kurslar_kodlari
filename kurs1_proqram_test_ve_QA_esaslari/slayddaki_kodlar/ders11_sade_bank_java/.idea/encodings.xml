@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/app/SadeBankçiliqProqrami.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/controller/HesabNəzarətçisi.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/model/Hesab.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/model/İstifadəçi.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/model/Əməliyyat.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/tests/SadeBankçiliqProqramiTesti.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/tests/İstifadəçiTesti.java" charset="UTF-16" />
+  </component>
+</project>

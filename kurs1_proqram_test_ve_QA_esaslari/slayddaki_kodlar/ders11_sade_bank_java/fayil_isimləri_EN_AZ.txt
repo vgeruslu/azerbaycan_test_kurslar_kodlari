@@ -1,0 +1,8 @@
+SimpleBankingApp.java → SadeBankçılıqProqramı.java
+AccountController.java → HesabNəzarətçisi.java
+Account.java → Hesab.java
+Transaction.java → Əməliyyat.java
+User.java → İstifadəçi.java
+SimpleBankingAppTest.java → SadeBankçılıqProqramıTesti.java
+UserTest.java → İstifadəçiTesti.java
+BankingApp.java → BankçılıqProqramı.java
