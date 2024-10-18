@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6c5d4821-d7af-484d-9830-cb50ad47b65a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ders11_CoffeeMaker.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/ders11_CoffeeMaker/ders11_CoffeeMaker.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ders11_xet_ehate_zeiflikler/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ders11_xet_ehate_zeiflikler/.idea/ders11_xet_ehate_zeiflikler.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ders11_xet_ehate_zeiflikler/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ders11_xet_ehate_zeiflikler/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ders11_xet_ehate_zeiflikler/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CoffeeMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CoffeeMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RecipeBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecipeBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/InventoryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/InventoryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/RecipeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/RecipeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ders11_sade_bank_java/out/production/ders11_sade_bank_java/tests/IstifadeçiTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ders11_sade_bank_java/out/production/ders11_sade_bank_java/tests/IstifadeçiTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ders11_sade_bank_java/src/tests/IstifadeçiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ders11_sade_bank_java/src/tests/IstifadeçiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../dərs 4-test hal kod.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2mkBGYAnprDfyU3N7oKaayJO7Ve" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.RecipeTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/Azerbaijan_Code/azerbaycan_test_kurslar_kodlari/kurs1_proqram_test_ve_QA_esaslari/slayddaki_kodlar/ders11_CoffeeMaker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RecipeTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.Main" />
+      <module name="ders11_CoffeeMaker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RecipeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ders11_CoffeeMaker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.RecipeTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.RecipeTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RecipeTest" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c5d4821-d7af-484d-9830-cb50ad47b65a" name="Changes" comment="" />
+      <created>1727610598087</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727610598087</updated>
+      <workItem from="1727610599124" duration="3017000" />
+      <workItem from="1727726568433" duration="165000" />
+      <workItem from="1727726740478" duration="4000" />
+      <workItem from="1727943797757" duration="893000" />
+      <workItem from="1728026331854" duration="2307000" />
+      <workItem from="1728031208485" duration="9000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ders11_CoffeeMaker$RecipeTest.ic" NAME="RecipeTest Coverage Results" MODIFIED="1727611795476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+  </component>
+</project>

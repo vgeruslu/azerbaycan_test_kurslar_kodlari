@@ -1,0 +1,26 @@
+<component name="libraryTable">
+  <library name="io.cucumber.java" type="repository">
+    <properties maven-id="io.cucumber:cucumber-java:7.20.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-java/7.20.1/cucumber-java-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/7.20.1/cucumber-core-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin/7.20.1/cucumber-gherkin-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-gherkin-messages/7.20.1/cucumber-gherkin-messages-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/gherkin/28.0.0/gherkin-28.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/messages/24.1.0/messages-24.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/testng-xml-formatter/0.2.0/testng-xml-formatter-0.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/query/12.2.0/query-12.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/tag-expressions/6.1.0/tag-expressions-6.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-expressions/17.1.0/cucumber-expressions-17.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/datatable/7.20.1/datatable-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-plugin/7.20.1/cucumber-plugin-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/docstring/7.20.1/docstring-7.20.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/html-formatter/21.7.0/html-formatter-21.7.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/junit-xml-formatter/0.5.0/junit-xml-formatter-0.5.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/cucumber/ci-environment/10.0.1/ci-environment-10.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/CoffeeMaker.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/Inventory.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/Main.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/Recipe.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/RecipeBook.java" charset="UTF-16" />
+    <file url="file://$PROJECT_DIR$/src/exceptions/RecipeException.java" charset="UTF-16" />
+  </component>
+</project>
