@@ -1,8 +1,8 @@
-# language: az
-Özəllik: Beer cans
+# language: en
+Feature: Beer cans
 
-  Ssenari: Counting beer cans
-    Tutaq ki I have <opening balance> beer cans
-    Və I have drunk <processed> beer cans
-    Əgər I go to my fridge
-    O halda I should have <in stock> beer cans
+  Scenario: Counting beer cans
+    Given I have <opening balance> beer cans
+    And I have drunk <processed> beer cans
+    When I go to my fridge
+    Then I should have <in stock> beer cans
