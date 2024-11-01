@@ -1,12 +1,12 @@
 # Azərbaycan test və QA kurslar kodları
 
-Bu GitHub anbarənda (repo) Azərbaycan dilində 🇦🇿 test və QA kurslar üçün istifadə olan kodlar yerləşdirilmişdir.
-Kurslar Udemy platformasında yerləşdirilmiş, və kurs siyahısını [bu keçiddə](https://www.udemy.com/user/vehid-geruslu/) görə bilərsiniz.
+Bu GitHub kod anbarında, Azərbaycan dilində 🇦🇿 test və QA kurslar üçün inkişaf olmuş və istifadə olan kodlar yerləşdirilmişdir.
 
-Hər kəsə uğurlar...
+Kursların detalları və videoları Udemy platformasında yerləşdirilmiş. Udemy'də, test və QA kurslarımızın siyahısını [bu keçiddə](https://www.udemy.com/user/vehid-geruslu/) görə bilərsiniz.
 
-Vəhid Gəruslu
+Hər kəsə uğurlar...  
+Happy testing!  
 
-[www.linkedin.com/in/vgeruslu](https://www.linkedin.com/in/vgeruslu)
-
+Vəhid Gəruslu  
+[www.linkedin.com/in/vgeruslu](https://www.linkedin.com/in/vgeruslu)  
 vehid.geruslu@gmail.com
