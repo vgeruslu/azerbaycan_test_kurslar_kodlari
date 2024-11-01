@@ -14,8 +14,6 @@ import java.util.List;
 public class HamisiburadaSeleniumTest {
     static WebDriver driver;
 
-
-
     public static void TC_məhsul_axtar() {
         // setup = quraşdırma
         WebElement axtarış_mətn_qutusu = driver.findElement(By.xpath("//*[@name = 'name' and not (contains(@class, 'search-bar-input-mobile'))]"));
