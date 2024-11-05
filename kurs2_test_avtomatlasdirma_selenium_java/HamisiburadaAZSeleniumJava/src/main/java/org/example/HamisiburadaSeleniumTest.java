@@ -14,16 +14,16 @@ import java.util.List;
 public class HamisiburadaSeleniumTest {
     static WebDriver driver;
 
-    public static void TC_məhsul_axtar() {
-        // setup = quraşdırma
+    public static void test_hal_məhsul_axtar() {
+        // 1-setup = quraşdırma
         WebElement axtarış_mətn_qutusu = driver.findElement(By.xpath("//*[@name = 'name' and not (contains(@class, 'search-bar-input-mobile'))]"));
         WebElement axtarış_düyməsi = driver.findElement(By.xpath("(//*[@class = 'input-group-append-overlay search_button'])[1]"));
 
-        // exercise = icra etmək
+        // 2-exercise = icra etmək
         axtarış_mətn_qutusu.sendKeys("Samovar");
         axtarış_düyməsi.click();
 
-        // verify = yoxlamaq
+        // 3-verify = yoxlamaq
         List<WebElement> butov_tapılan_məhsullar = driver.findElements(
                 By.xpath("//*[@id= 'ajax-products']//div[contains (@class, 'product-card')] "));
 
@@ -32,7 +32,7 @@ public class HamisiburadaSeleniumTest {
 
             WebElement məhsul_qiymeti_span = driver.findElement(
                     By.xpath("(//div[contains (@class, 'product-card')]//div[contains (@class, 'product-price')]//span)[" + (məhsul_index + 1) + "]"));
-            //məhsul_qiymeti.
+            //məhsul_qiymeti
             String məhsul_qiymeti = məhsul_qiymeti_span.getAttribute("innerHTML");
             məhsul_qiymeti = məhsul_qiymeti.replaceAll("\\s+", "");
             System.out.println("məhsul_qiymeti = " + məhsul_qiymeti);
@@ -51,7 +51,9 @@ public class HamisiburadaSeleniumTest {
             ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='2px solid white'", məhsul);
 
         }
-        // teardown = təmizləmək
+        // 4-teardown = təmizləmək
+        // bu test heç yeni data sistemə yükləmiyib,
+        // ona görə heç "təmizləmək" ehtiyac deyil
     }
 
     //------------------------------------------------------------------
@@ -64,7 +66,7 @@ public class HamisiburadaSeleniumTest {
     }
     //------------------------------------------------------------------
     public static void test_suite_calisdir() {
-        TC_məhsul_axtar();
+        test_hal_məhsul_axtar();
     }
     //------------------------------------------------------------------
     public static void main(String[] args) {
