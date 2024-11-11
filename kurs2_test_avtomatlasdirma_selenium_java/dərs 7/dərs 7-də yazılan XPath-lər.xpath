@@ -1,0 +1,11 @@
+//input[contains(@class, 'search-bar-input') and not(contains(@class, 'search-bar-input-mobile'))]
+
+
+https://etender.gov.az/
+
+driver.FindElement(By.LinkText("Click Here"))
+
+//form[@class = 'search_form'] //button [contains(@class, 'search_button')] 
+
+//div  [contains(@class, 'navbar-light')] //button [contains(@class, 'search_button')] 
+
