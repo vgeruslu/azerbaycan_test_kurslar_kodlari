@@ -1,7 +1,5 @@
 package ders11_if_else;
 
-import javax.swing.*;
-
 public class YasYoxlama {
 
     public static void main(String[] args) {
