@@ -1,0 +1,5 @@
+Write a simple code block in Azerbaijani on how to handle the ConnectException exception 
+
+Write several interesting Java try/catch blocks. All names and labels in code should be in Azerbaijani 
+
+Make the text as professional as possible:  Code reliable to exceptions

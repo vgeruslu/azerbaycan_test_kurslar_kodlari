@@ -1,5 +1,6 @@
+package ders11_if_else.qehve_tetbiqi;
 
-public class EsasSinif {
+public class EsasSinifQehveTetbiqi {
     public static void main(String[] args) {
 
         Qəhvə qəhvə = new Qəhvə();

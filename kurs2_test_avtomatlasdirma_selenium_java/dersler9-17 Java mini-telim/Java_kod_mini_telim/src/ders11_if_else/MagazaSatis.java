@@ -1,5 +1,4 @@
 package ders11_if_else;
-
 // MagazaSatis
 
 import java.util.Scanner;

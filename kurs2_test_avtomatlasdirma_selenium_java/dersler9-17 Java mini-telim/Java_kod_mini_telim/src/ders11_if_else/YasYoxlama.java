@@ -11,7 +11,7 @@ public class YasYoxlama {
         //String yaş_string = new Scanner(System.in).nextLine();
 
         /* 3- UI ile deyer oxumaq:
-        ImageIcon icon = new ImageIcon("src/ders11_if_else/azerbaycan_icon_kicik.png");
+        ImageIcon icon = new ImageIcon("src/Bolme4_Java_mini_təlim.ders11_if_else/azerbaycan_icon_kicik.png");
         String yaş_string = (String) JOptionPane.showInputDialog
                 (null, "Zəhmət olmasa yaşınızı daxil edin",
                         "Mobil bankçılıq tətbiqi", JOptionPane.INFORMATION_MESSAGE,

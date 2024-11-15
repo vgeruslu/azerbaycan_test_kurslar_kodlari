@@ -1,4 +1,4 @@
-package ders15_OOP;
+package ders15_OOP.sade_avtomobil_tetbiqi;
 
 public class Avtomobil {
     private String marka;

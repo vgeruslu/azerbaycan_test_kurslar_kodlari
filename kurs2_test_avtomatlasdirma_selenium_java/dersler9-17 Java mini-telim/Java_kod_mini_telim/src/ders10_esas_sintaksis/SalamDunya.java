@@ -6,5 +6,4 @@ public class SalamDunya {
         System.out.println("Salam Dünya!");
     }
 
-
 }
