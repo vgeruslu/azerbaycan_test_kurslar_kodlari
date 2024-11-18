@@ -1,3 +1,47 @@
+Write a simple Java Selenium code, showing usage of Selenium Browser Control Commands:
+get(String url)	
+getTitle()	
+getCurrentUrl()
+getPageSource()	
+close()	
+quit()
+----------------------------
+
+Write a simple Java Selenium code, showing usage of Selenium  Navigation Commands:
+navigate().to(String url)
+navigate().back()	
+navigate().forward()
+navigate().refresh()
+
+In the code, all texts including comments, labels, etc should be in Azerbaijani 
+----------------------------
+
+Write a simple Java Selenium code, for testing the first page of this web app: https://www.hamisiburada.az/, showing usage of the followomg Element Interaction Commands:
+findElement(By locator)
+findElements(By locator)
+click()
+sendKeys(String keys)
+clear()
+getText()
+isDisplayed()
+isEnabled()
+isSelected()
+submit()
+
+In the code, all texts including comments, labels, etc should be in Azerbaijani 
+----------------------------
+
+Add several statements to the above code, showing usage of these Selenium Wait Commands:
+implicitlyWait(long time, TimeUnit unit)
+WebDriverWait.until()
+Thread.sleep(long millis)
+
+In the code, all texts including comments, labels, etc should be in Azerbaijani 
+----------------------------
+
+Translate to Azərbaycani, and Make it as professional as possible: 
+As the AzProTİP platform, we fully support the fellow Azerbaijani ladies working in the Software / Tech industry
+
 Write a simple code block in Azerbaijani on how to handle the ConnectException exception 
 
 Write several interesting Java try/catch blocks. All names and labels in code should be in Azerbaijani 

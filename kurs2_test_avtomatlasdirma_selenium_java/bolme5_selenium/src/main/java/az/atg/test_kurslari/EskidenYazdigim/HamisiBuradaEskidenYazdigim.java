@@ -1,6 +1,6 @@
-package az.atg_kurslari;
+package az.atg.test_kurslari.EskidenYazdigim;
 
-import TestKitabxanalar.TestKitabxana;
+import KitabxanalarLibs.TestKitabxana;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import java.util.List;
 
-public class HamisiburadaSeleniumTest {
+public class HamisiBuradaEskidenYazdigim {
     static WebDriver driver;
 
     public static void test_hal_məhsul_axtar() {

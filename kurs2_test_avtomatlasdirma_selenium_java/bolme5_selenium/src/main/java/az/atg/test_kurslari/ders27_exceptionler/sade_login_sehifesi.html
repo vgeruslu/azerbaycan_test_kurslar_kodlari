@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sadə Login səhifəsi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <form action="login_yoxlama.php" method="post">
+        <div class="imgcontainer">
+            <img src="img_avatar.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="istifadəçi_adı"><b>İstifadəçi adı</b></label>
+            <input type="text" placeholder="İstifadəçi adını daxil edin" name="istifadəçi_adı" required>
+            <!-- //*[@name = 'istifadəçi_adı']
+            -->
+
+            <label for="şifrə"><b>Şifrə</b></label>
+            <input type="password" placeholder="Şifrəni daxil edin" name="şifrə" required>
+
+            <button type="submit">Daxil ol</button>
+            <label>
+                <input type="checkbox" checked="checked" name="xatırla"> Məni xatırla
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">Ləğv et</button>
+            <span class="psw">Şifrəni <a href="#">unutdunuz?</a></span>
+        </div>
+    </form>
+
+
+
+</body>
+</html>

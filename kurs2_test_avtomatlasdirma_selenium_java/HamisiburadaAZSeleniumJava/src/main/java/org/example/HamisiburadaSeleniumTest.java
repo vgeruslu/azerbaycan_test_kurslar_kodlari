@@ -16,8 +16,10 @@ public class HamisiburadaSeleniumTest {
 
     public static void test_hal_məhsul_axtar() {
         // 1-setup = quraşdırma
-        WebElement axtarış_mətn_qutusu = driver.findElement(By.xpath("//*[@name = 'name' and not (contains(@class, 'search-bar-input-mobile'))]"));
-        WebElement axtarış_düyməsi = driver.findElement(By.xpath("(//*[@class = 'input-group-append-overlay search_button'])[1]"));
+        WebElement axtarış_mətn_qutusu = driver.findElement(
+                By.xpath("//*[@name = 'name' and not (contains(@class, 'search-bar-input-mobile'))]"));
+        WebElement axtarış_düyməsi = driver.findElement(
+                By.xpath("(//*[@class = 'input-group-append-overlay search_button'])[1]"));
 
         // 2-exercise = icra etmək
         axtarış_mətn_qutusu.sendKeys("Samovar");
