@@ -5,7 +5,7 @@
 define('DB_Server', 'localhost');
 define('DB_Username', 'root');
 define('DB_Password', '');
-define('DB_Name', 'facebook_EN');
+define('DB_Name', 'mini_facebook');
 // For the purposes of this assignmnet, the default username and password were not changed for ease of access/use
 
 // Connect to database & check conneciton

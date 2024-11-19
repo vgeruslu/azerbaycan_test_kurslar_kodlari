@@ -1,5 +1,5 @@
+
 function change_language() {
-    
     //var phpVariable = "<?php if ($_SESSION['system_language_dil'] == 'AZ') $_SESSION['system_language_dil'] = 'EN' else $_SESSION['system_language_dil'] = 'AZ';  ?>";
     var system_language_dil = readCookie("system_language_dil");
     //document.cookie.split(';').find(row => row.startsWith('system_language_dil=')).split('=')[1];
@@ -66,3 +66,61 @@ function listCookies() {
     }
     return aString;
 }
+
+function doğrulamaq_profil_ad_dəyişmək_form() {
+    var system_language_dil = readCookie("system_language_dil");
+    
+    var yeni_ad_xana = document.forms["ad_soyad_form"]["yeni_ad"];
+    if (yeni_ad_xana.value == "") {
+        yeni_ad_xana.style.border = '1px solid';
+        yeni_ad_xana.style.borderColor = 'red';
+        
+        if (system_language_dil == "AZ")
+            alert("Ad doldurulmalıdır");
+        else // EN
+            alert("Name must be filled out");
+
+        return false;
+    }
+    yeni_ad_xana.style.border = '1px solid';
+    yeni_ad_xana.style.borderColor = 'default';
+    
+    var yeni_soyad_xana = document.forms["ad_soyad_form"]["yeni_soyad"];
+    if (yeni_soyad_xana.value == "") {
+        yeni_soyad_xana.style.border = '1px solid';
+        yeni_soyad_xana.style.borderColor = 'red';
+        
+        if (system_language_dil == "AZ") 
+            alert("Soyad doldurulmalıdır");
+        else // EN
+            alert("Last name must be filled out");
+      
+      return false;
+    }
+    yeni_soyad_xana.style.border = '1px solid';
+    yeni_soyad_xana.style.borderColor = 'default';    
+    
+} // doğrulamaq_profil_ad_dəyişmək_form
+
+function doğrulamaq_profil_şifrə_dəyişmək_form() {
+    var system_language_dil = readCookie("system_language_dil");
+    
+    var yeni_şifrə_xana = document.forms["şifrə_dəyişmək_form"]["yeni_şifrə"];
+    var yeni_şifrə_təkrar_xana = document.forms["şifrə_dəyişmək_form"]["yeni_şifrə_təkrar"];
+    
+    if (yeni_şifrə_xana.value != yeni_şifrə_təkrar_xana.value) {
+        yeni_şifrə_təkrar_xana.style.border = '1px solid';
+        yeni_şifrə_təkrar_xana.style.borderColor = 'red';
+        
+        if (system_language_dil == "AZ")
+            alert("Yeni şifrə və təkrarı eyni olmalıdırlar");
+        else // EN
+            alert("The two passwords must match");
+
+        return false;
+    }
+    yeni_şifrə_təkrar_xana.style.border = '1px solid';
+    yeni_şifrə_təkrar_xana.style.borderColor = 'default';
+    
+} // doğrulamaq_profil_şifrə_dəyişmək_form
+

@@ -46,33 +46,27 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<style>
-table, th, td {
-  border:1px solid black;
-}
-</style>
     <head>
         <title>Forgot password</title>
 	    <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-	    <!--<h1>--php echo $system_name --</h1>-->
+		<div class="div_center">
+			<h2>Forgot password</h2>
+			
+			<!--Start form-->   <!--Change username to tbl_user ?!!!-->
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+					<label>Email</label>
+					<input type="text" name="email"><br>
 
+					<label>Mother maiden name</label>
+					<input type="text" name="motherMaidenName"><br>
 
-
-        <h2>Forgot password</h2>
-		
-		<!--Start form-->   <!--Change username to tbl_user ?!!!-->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <label>Email</label>
-                <input type="text" name="email"><br>
-
-                <label>Mother maiden name</label>
-                <input type="text" name="motherMaidenName"><br>
-
-                <input type="submit" class="btn btn-primary" value="Reset my password">
-            </div>
-        </form>
+					<input type="submit" class="btn btn-primary" value="Reset my password">
+			</form>
+			
+		</div>
     </body>
+	
 </html>

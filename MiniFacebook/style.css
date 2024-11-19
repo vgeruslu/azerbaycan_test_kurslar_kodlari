@@ -2,11 +2,37 @@ body{
   font-family: Arial, sans-serif;
 }
 
-.input{
+.div_center{
 	text-align: center;
 }	
 
 h1 {
   width: 100%;
   text-align:center;
+}
+
+hr {
+  width:50%;
+  margin:10 auto;
+}
+
+table {
+  border-spacing: 10px;
+}
+
+th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+}
+
+
+.menu_td_hover td:hover {
+  background-color: #2a12e7;
+  color: #1b1440;
 }

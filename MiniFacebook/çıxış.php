@@ -7,6 +7,6 @@
     session_destroy();
 
     // Redirect to login page
-    header("location: login.php");
+    header("location: daxil_ol.php");
     exit;
 ?>
