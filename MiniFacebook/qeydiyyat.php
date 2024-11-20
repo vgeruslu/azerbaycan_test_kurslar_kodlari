@@ -1,84 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<div class="div_center">
+
 <?php
     require_once "headers_all.php";
 
-
     // Processing form when submitted
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $motherMaidenName = $_POST["motherMaidenName"];
+        $epoçt = $_POST["epoçt"];
+        $şifrə = $_POST["şifrə"];
+        $ad = $_POST["ad"];
+        $soyad = $_POST["soyad"];
+       
+        $giriş_dəyərlərdə_etibarlıdır = true;
         
-        if ($email == '') {
-            echo "<font style='color:red'>Username cannot be empty.</font>";
-            exit("");
+        if ($epoçt == '') {
+            echo "<font style='color:red'>". 
+                $UI_mətnləri['epoçt_boş_xəta_mesajı'][$_COOKIE['system_language_dil']] . 
+                "</font><br>";
+            $giriş_dəyərlərdə_etibarlıdır = false;
         }
-        if ($password == '') {
-            echo "<font style='color:red'>Password cannot be empty.</font>";
-            exit("");
-        }
-        if ($motherMaidenName == '') {
-            echo "<font style='color:red'>motherMaidenName cannot be empty.</font>";
-            exit("");
-        }
-        
-        // Database login check
-        $stmt = $db_link->stmt_init();
-        $query = "SELECT userID FROM tbl_user WHERE emailAddress = '" . 
-                        $email. "'";
-                        
-        //printf("query: %s<br>", $query); 
-        $stmt->prepare($query);
-        $stmt->execute();
-        $stmt->store_result();
-        //printf("number of rows: %d<br>", $stmt->num_rows);
+        if ($şifrə == '') {
+            echo "<font style='color:red'>". 
+                $UI_mətnləri['şifrə_boş_xəta_mesajı'][$_COOKIE['system_language_dil']] . 
+                "</font><br>";            
+            $giriş_dəyərlərdə_etibarlıdır = false;
+            }
+        if ($ad == '') {
+            echo "<font style='color:red'>". 
+                $UI_mətnləri['ad_boş_xəta_mesajı'][$_COOKIE['system_language_dil']] . 
+                "</font><br>";
+            //exit("");
+            $giriş_dəyərlərdə_etibarlıdır = false;
 
-        // If num_rows==1, it means the email is taken already, exit the script
-        if($stmt->num_rows==1) {
-            echo "<font style='color:red'>The email is taken already. Enter another email address.</font>";
-            exit("");
+        }        
+        if ($soyad == '') {
+            echo "<font style='color:red'>". 
+                $UI_mətnləri['soyad_boş_xəta_mesajı'][$_COOKIE['system_language_dil']] . 
+                "</font><br>";
+            //exit("");
+            $giriş_dəyərlərdə_etibarlıdır = false;
         }
         
-        // we need to get $userID
-        $userID=rand(100, 10000000);
-        
-        $stmt = $db_link->stmt_init();
-        $query = "INSERT INTO tbl_user (userID, emailAddress, password, mothersMaidenName)".
-                    "VALUES (" . $userID . ", '" . $email . "', '" . $password . "', '" . $motherMaidenName. "')";
-                        
-        //printf("query: %s<br>", $query); 
-        $stmt->prepare($query);
-        $stmt->execute();
-        // End connection
-        mysqli_close($db_link);
-        echo "<font style='color:green'>A new account was created. You can <a href='login.php'>login now</a>.</font><br>";
-        exit("");
+        if ( $giriş_dəyərlərdə_etibarlıdır ) {
+
+            // yoxla gor eyni email istifade olunub?
+            $stmt = $db_link->stmt_init();
+            $query = "SELECT epoçt 
+                        FROM tbl_istifadəçi 
+                        WHERE epoçt = '" . 
+                           $epoçt. "'";
+                            
+            //printf("query: %s<br>", $query); 
+            $stmt->prepare($query);
+            $stmt->execute();
+            $stmt->store_result();
+
+            // If num_rows==1, it means the email is taken already, exit the script
+            if($stmt->num_rows==1) {
+                echo "<font style='color:red'>" .
+                    $UI_mətnləri['xəta_mesajı_epoçt_artıq_götürülüb'][$_COOKIE['system_language_dil']] . 
+                    "</font>";
+            }
+            else {
+                
+                $query = "INSERT INTO tbl_istifadəçi 
+                            (epoçt, şifrə, ad, soyad)".
+                            "VALUES ('" . $epoçt . "', '" . $şifrə . "', '" . $ad . "', '" . $soyad. "')";
+                                
+                //printf("query: %s<br>", $query); 
+                $stmt = $db_link->stmt_init();
+                $stmt->prepare($query);
+                $stmt->execute();
+                mysqli_close($db_link);
+                echo "<font style='color:green'>"  .
+                        $UI_mətnləri['yeni_hesab_yaradıldı_mesaj'][$_COOKIE['system_language_dil']] . 
+                        "</font><br>";
+            }
+        }
     }
 ?>
+</div>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Register</title>
-	    <link rel="stylesheet" href="style.css">
-    </head>
+<meta charset="UTF-8">
+</head>
 
-    <body>
-        <h2>Sign Up</h2>
-		<p>Please fill in the information to create an account:</p>
-		
+<body>
+    <div class="div_center">
+
+        <h2>
+            <?php echo $UI_mətnləri['qeydiyyat_keçin_səhifə_başlığı'][$_COOKIE['system_language_dil']] ?>
+        </h2>
+        
 		<!--Start form-->   <!--Change username to tbl_user ?!!!-->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <label>Username (email)</label>
-                <input type="text" name="email"><br>
+                
+                <p>
+                <label>
+                <?php echo $UI_mətnləri['epoçt'][$_COOKIE['system_language_dil']] ?>
+                </label>
+                <input type="text"  
+                    placeholder="<?php echo $UI_mətnləri['epoçt_qutu_işarəsi'][$_COOKIE['system_language_dil']] ?>"  
+                    class="input_text" name="epoçt" autocomplete="off" >
+                </p>                
+                
+                <p>
+                <label>
+                <?php echo $UI_mətnləri['şifrə'][$_COOKIE['system_language_dil']] ?>
+                </label>
+                <input type="password" 
+                        placeholder="<?php echo $UI_mətnləri['şifrə_qutu_işarəsi'][$_COOKIE['system_language_dil']] ?>"  
+                        class="input_text" name="şifrə" autocomplete="off" >
+                </p> 
 
-                <label>Password</label>
-                <input type="password" name="password" value=""><br>
+                <p>
+                <label>
+                <?php echo $UI_mətnləri['ad_label'][$_COOKIE['system_language_dil']] ?>
+                </label>
+                <input type="text"  
+                        placeholder="<?php echo $UI_mətnləri['ad_label'][$_COOKIE['system_language_dil']] ?>"  
+                        class="input_text" name="ad" autocomplete="off" >
+                </p> 
 
-                <label>Mother maiden name</label>
-                <input type="text" name="motherMaidenName"><br>
-
-                <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
+                <p>
+                <label>
+                <?php echo $UI_mətnləri['soyad_label'][$_COOKIE['system_language_dil']] ?>
+                </label>
+                <input type="text"  
+                        placeholder="<?php echo $UI_mətnləri['soyad_label'][$_COOKIE['system_language_dil']] ?>"  
+                        class="input_text" name="soyad" autocomplete="off" >
+                </p> 
+                                                
+                <p>
+                    <input type="submit" value="<?php echo $UI_mətnləri['qeydiyyat_keç_düyməsi'][$_COOKIE['system_language_dil']] ?>" class="submit">                
+                </p> 
+                
+                <p><a href="daxil_ol.php">
+                    <?php echo $UI_mətnləri['daxil_ol_link_adı'][$_COOKIE['system_language_dil']] ?>
+                    </a>
+                </p>
+                                
         </form>
-    </body>
+    </div>
+        
+</body>
 </html>

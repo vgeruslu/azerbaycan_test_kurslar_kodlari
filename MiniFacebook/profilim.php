@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="div_center">
 <head>
     <?php
 
@@ -12,36 +11,86 @@
 </head>
 
 <body>
-
-        <h2>
-			<?php echo $UI_mətnləri['profilim_üst_mətn'][$_COOKIE['system_language_dil']] ?>
-		</h2>
+<div class="div_center">
+	<h2>
+		<?php echo $UI_mətnləri['profilim_üst_mətn'][$_COOKIE['system_language_dil']] ?>
+	</h2>
 		
 	<?php
 
 		$cari_user_ID_epoçt = $_SESSION["epoçt"];
-		$ad = $_SESSION["ad"];
-		$soyad = $_SESSION["soyad"];
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-			if(isset($_POST['yeni_ad']) || isset($_POST['yeni_soyad']))
-				printf("yeni_ad or soy verilmis<br>");
+			if(isset($_POST['yeni_ad']) && isset($_POST['yeni_soyad'])) {
+				//printf("yeni_ad or soy verilmis<br>");
+				// car deyerleri oxu, eger 
+				$stmt = $db_link->stmt_init();
+				$query = "UPDATE tbl_istifadəçi 
+							SET    ad = '" . $_POST['yeni_ad'] .
+							"' , soyad = '" . $_POST['yeni_soyad'] .
+							"' WHERE epoçt = '". $cari_user_ID_epoçt . "';";
+				//printf("%s<br>", $query);
+				
+				$stmt->prepare($query);
+				$stmt->execute();
+				mysqli_close($db_link);
+
+				$_SESSION["ad"] = $_POST['yeni_ad'];
+				$_SESSION["soyad"] = $_POST['yeni_soyad'];
+								
+				echo "<div id='div_məlumat_mesajı' class='məlumat_mesajı'>" . 
+					$UI_mətnləri['ad_soyad_yeniləndi_mesajı'][$_COOKIE['system_language_dil']] 	
+					. "</div>";					
+			}
+							
             /*$new_post = $_POST["yeni_paylaşım"];
+			if(isset($url_components['query']));*/
 
-			if(isset($url_components['query']));
 
-			$stmt = $db_link->stmt_init();
-			$query = "INSERT INTO tbl_dostluq_münasibətləri (istifadəçi1_epoçt, istifadəçi2_epoçt) 
-						VALUES ('$cari_user_ID_epoçt', '$əlavə_olunacaq_dost_İD')";
-			//printf("query: %s<br>", $query);
-			
-			$stmt->prepare($query);
-			$stmt->execute();*/
 			if(isset($_POST['cari_şifrə'] ) && $_POST['cari_şifrə'] != "")
-				printf("şifrə verilmis<br>");
-			
-		}
+			{
+				// yoxla cari_şifrə
+				$stmt = $db_link->stmt_init();
+				$query = "SELECT şifrə
+							FROM tbl_istifadəçi 
+							WHERE epoçt = '". $cari_user_ID_epoçt . "';";
 
+				//printf("%s", $query);
+				
+				$stmt->prepare($query);
+				$stmt->execute();
+				
+				$stmt->bind_result($sistemde_olan_cari_şifrə);
+				$stmt->fetch();	
+				mysqli_close($db_link);
+
+				if ($_POST['cari_şifrə'] != $sistemde_olan_cari_şifrə) 
+					echo "<div id='div_məlumat_mesajı' class='etibarsız'>" . 
+						$UI_mətnləri['cari_şifrə_yalnışdır_mesajı'][$_COOKIE['system_language_dil']] 	
+						. "</div>";	
+				else {
+					$stmt = $db_link->stmt_init();
+					$query = "UPDATE tbl_istifadəçi 
+								SET    şifrə = '" . $_POST['yeni_şifrə'] .
+								"' WHERE epoçt = '". $cari_user_ID_epoçt . "';";
+					printf("%s", $query);
+					
+					$stmt->prepare($query);
+					$stmt->execute();
+					
+					$db_link->commit();
+					mysqli_close($db_link);
+
+					echo "<div id='div_məlumat_mesajı' class='məlumat_mesajı'>" . 
+						$UI_mətnləri['şifrə_yeniləndi_mesajı'][$_COOKIE['system_language_dil']] 	
+						. "</div>";	
+				}				
+			}
+			
+		} 
+
+		$ad = $_SESSION["ad"];
+		$soyad = $_SESSION["soyad"];
 
 
 	?>
@@ -73,6 +122,7 @@
 				<input name="yeni_ad" 
 					value="<?php echo $ad ?>"
 				>
+				<label class="etibarsız_kiçik" id = "xeta_mesaj_ad"></label>				
 			</td>	
 		</tr>	
 
@@ -86,6 +136,7 @@
 				<input name="yeni_soyad" 
 					value="<?php echo $soyad ?>"
 				>
+				<label class="etibarsız_kiçik" id ="xeta_mesaj_soyad"></label>	
 			</td>	
 		</tr>
 	</table>	
@@ -112,7 +163,10 @@
 				<?php echo $UI_mətnləri['cari_şifrə_label'][$_COOKIE['system_language_dil']] ?>
 				</label>
 			</td>	
-			<td align="left"><input type="password" name="cari_şifrə" value=""></td>	
+			<td align="left">
+				<input type="password" name="cari_şifrə" value="">
+				<label class="etibarsız_kiçik" id ="xeta_mesaj_cari_şifrə"></label>					
+			</td>	
 		</tr>			
 
 
@@ -122,7 +176,10 @@
 					<?php echo $UI_mətnləri['yeni_şifrə_label'][$_COOKIE['system_language_dil']] ?>
 				</label>
 			</td>	
-			<td align="left"><input type="password" name="yeni_şifrə" value=""></td>	
+			<td align="left">
+				<input type="password" name="yeni_şifrə" value="">
+				<label class="etibarsız_kiçik" id ="xeta_mesaj_yeni_şifrə"></label>					
+			</td>	
 		</tr>			
 
 		<tr>
@@ -131,7 +188,10 @@
 					<?php echo $UI_mətnləri['yeni_şifrə_təkrar_label'][$_COOKIE['system_language_dil']] ?>
 				</label>
 			</td>	
-			<td align="left"><input type="password" name="yeni_şifrə_təkrar" value=""></td>
+			<td align="left">
+				<input type="password" name="yeni_şifrə_təkrar" value="">
+				<label class="etibarsız_kiçik" id ="xeta_mesaj_yeni_şifrə_təkrar"></label>			
+			</td>
 		</tr>			
 
 	</table>	

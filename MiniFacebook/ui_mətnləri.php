@@ -19,11 +19,11 @@
         ],
         
         // daxil_ol səhifəsi
-        'epoçt' => [
+        'epoçt_qutu_işarəsi' => [
             'AZ' => "Email adresinizi daxil edin",
             'EN' => "Enter your email address",
         ],
-        'şifrə' => [
+        'şifrə_qutu_işarəsi' => [
             'AZ' => "Şifrənizi daxil edin",
             'EN' => "Enter your passwords",
         ],
@@ -41,7 +41,7 @@
         ],
         'yanlış_istifadəçi_adı_parol' => [
             'AZ' => "Yanlış istifadəçi adı və/və ya parol. Yenidən cəhd edin.",
-            'EN' => "Invalud username and/or password. Please try again.",
+            'EN' => "Invalid username and/or password. Please try again.",
         ],
         
         // üst menyu
@@ -164,26 +164,82 @@
             'AZ' => "Soyad",
             'EN' => "Last name",
         ],           
-        '' => [
-            'AZ' => "",
-            'EN' => "",
+        'ad_soyad_yeniləndi_mesajı' => [
+            'AZ' => "Ad və soyadınız yeniləndi.",
+            'EN' => "Your name and last name were updated.",
         ],           
-        '' => [
-            'AZ' => "",
-            'EN' => "",
+        'şifrə_yeniləndi_mesajı' => [
+            'AZ' => "Şifrəniz yeniləndi.",
+            'EN' => "Your password was updated.",
+        ],     
+        'cari_şifrə_yalnışdır_mesajı' => [
+            'AZ' => "Cari şifrəniz yalnışdır. Təkrar cəhd edin.",
+            'EN' => "The current password that you entered, does not match your password in the system. Try agian.",
+        ],   
+        
+        // qeydiyyat 
+                   
+        'qeydiyyat_keçin_səhifə_başlığı' => [
+            'AZ' => "Qeydiyyatdan keçin",
+            'EN' => "Sign up a new account",
+        ],   
+        'epoçt' => [
+            'AZ' => "Epoçt",
+            'EN' => "Email",
+        ],
+        'şifrə' => [
+            'AZ' => "Şifrə",
+            'EN' => "Password",
+        ],                
+        'qeydiyyat_keç_düyməsi' => [
+            'AZ' => "Qeydiyyatdan keç",
+            'EN' => "Sign up",
+        ],   
+
+        'epoçt_boş_xəta_mesajı' => [
+            'AZ' => "Xəta: Epoçt xanası doldurulmalıdır",
+            'EN' => "Error: Email cannot be empty",
         ],           
-        '' => [
-            'AZ' => "",
-            'EN' => "",
+        'şifrə_boş_xəta_mesajı' => [
+            'AZ' => "Xəta: Şifrə xanası doldurulmalıdır",
+            'EN' => "Error: Password cannot be empty",
         ],           
-        '' => [
-            'AZ' => "",
-            'EN' => "",
+
+        'ad_boş_xəta_mesajı' => [
+            'AZ' => "Xəta: Ad xanası doldurulmalıdır",
+            'EN' => "Error: First name cannot be empty",
         ],           
+        
+        'soyad_boş_xəta_mesajı' => [
+            'AZ' => "Xəta: Soyad xanası doldurulmalıdır",
+            'EN' => "Error: Last name cannot be empty",
+        ],           
+                        
+        'xəta_mesajı_epoçt_artıq_götürülüb' => [
+            'AZ' => "Həmin e-poçt artıq götürülüb. Başqa e-poçt ünvanı daxil edin.",
+            'EN' => "That email is already taken. Enter another email address.",
+        ],   
+        'yeni_hesab_yaradıldı_mesaj' => [
+            'AZ' => "Yeni hesab yaradıldı. İndi <a href='daxil_ol.php'>daxil ola bilərsiniz</a>.",
+            'EN' => "A new account was created. You can <a href='daxil_ol.php'>login now</a>.",
+        ],   
+        'daxil_ol_link_adı' => [
+            'AZ' => "Daxil ol",
+            'EN' => "Login",
+        ],   
         '' => [
             'AZ' => "",
             'EN' => "",
-        ],                        
+        ],   
+        '' => [
+            'AZ' => "",
+            'EN' => "",
+        ],   
+        '' => [
+            'AZ' => "",
+            'EN' => "",
+        ],   
+                                         
     ];
 
 ?>

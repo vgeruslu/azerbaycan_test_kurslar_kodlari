@@ -5,7 +5,7 @@
         // session isn't started
         session_start();
     }
-    require_once "database_connection.php";
+    require_once "verilənlər_bazası_bağlantısı.php";
     
     require_once "ui_mətnləri.php";
 

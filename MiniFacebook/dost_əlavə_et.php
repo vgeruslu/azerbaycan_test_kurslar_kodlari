@@ -65,9 +65,14 @@
 
 	// Display friends list
 	while($stmt->fetch()){
+		$şəkil_fayl = "istifadəçi_üz_şəkilləri\\" . $digər_istifadəçi_epoçt. ".jpg";
+		if (!file_exists($şəkil_fayl )) {
+			$şəkil_fayl  = "istifadəçi_üz_şəkilləri\\şəkil_yox_ag.jpg";
+		}
+
+		  
 		echo "<a href='istifadəçi_profili.php?istifadəçi_epoçt=". $digər_istifadəçi_epoçt . "'>
-			<img src='istifadəçi_üz_şəkilləri\\".
-                $digər_istifadəçi_epoçt.".jpg'>".  $digər_istifadəçi_ad . " " . $digər_istifadəçi_soyad. "</a><br>";
+			<img src=' " . $şəkil_fayl . "'><br>".  $digər_istifadəçi_ad . " " . $digər_istifadəçi_soyad. "</a><br>";
 		
 		// check if te user in this loop iteration is already a friend of the logged in user or not
 		$query2 = 	"SELECT * FROM tbl_dostluq_münasibətləri

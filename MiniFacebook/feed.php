@@ -17,11 +17,14 @@
     <?php
         // Welcome message to identify user
         // Xoş gəldin:
-        echo "<p><img src='istifadəçi_üz_şəkilləri\\".
-                $_SESSION['epoçt'].".jpg' ><br>".
-                $_SESSION['ad']. " " . $_SESSION['soyad'] .
+        
+        $şəkil_fayl = "istifadəçi_üz_şəkilləri\\" . $_SESSION['epoçt']. ".jpg";
+        if (!file_exists($şəkil_fayl )) {
+            $şəkil_fayl  = "istifadəçi_üz_şəkilləri\\şəkil_yox_ag.jpg";
+        }
+        echo "<p><img src='" . $şəkil_fayl . "'><br>".
+            $_SESSION['ad']. " " . $_SESSION['soyad'] .
             "</p>";
-
     ?>
 
         <!--New post submit-->
@@ -180,17 +183,22 @@
 
         // Display friends list
         while($stmt->fetch()){
+            $şəkil_fayl = "istifadəçi_üz_şəkilləri\\" . $dost_userID. ".jpg";
+            if (!file_exists($şəkil_fayl )) {
+                $şəkil_fayl  = "istifadəçi_üz_şəkilləri\\şəkil_yox_ag.jpg";
+            }
+            
             echo"<a href='istifadəçi_profili.php?istifadəçi_epoçt=". $dost_userID . "'>
-                <img src='istifadəçi_üz_şəkilləri\\".
-                $dost_userID.".jpg' ><br>";
+                <img src=' " . $şəkil_fayl . "' ><br>";
                 
-            printf("%s %s</a>", $dost_ad, $dost_soyad);
+            printf("%s %s</a><br>", $dost_ad, $dost_soyad);
             
             echo " <font size='-1'><a href='feed.php?silinəcək_dost_İD=". $dost_userID. "'>" .
                 $UI_mətnləri['dostluqdan_çıxar_düyməsi'][$_COOKIE['system_language_dil']] .
                 "</a></font>";
             echo "<hr>";//<br>";
         }
+        mysqli_close($db_link);
 
         //Close table column and row for friends list
         echo "</td>

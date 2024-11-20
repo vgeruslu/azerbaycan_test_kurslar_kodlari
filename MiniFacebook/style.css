@@ -36,3 +36,16 @@ table.center {
   background-color: #2a12e7;
   color: #1b1440;
 }
+
+.etibarsız_kiçik {
+  color: red;
+  font-size: small;
+}
+
+.etibarsız {
+  color: red;
+}
+
+.məlumat_mesajı {
+  color: green;
+}

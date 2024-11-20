@@ -40,7 +40,8 @@
             //printf("userId: %d<br>", $userId);
             //printf("firstName: %s<br>", $firstName);
             session_start();
-            
+            mysqli_close($db_link);
+
             $_SESSION["epoçt"] = $epoçt;
             $_SESSION["ad"] = $ad;
             $_SESSION["soyad"] = $soyad;
@@ -62,11 +63,11 @@
         <form action="daxil_ol.php" method="POST" autocomplete="off" >
             <div class="div_center">
                 
-                <p><input type="text"  placeholder="<?php echo $UI_mətnləri['epoçt'][$_COOKIE['system_language_dil']] ?>"  
+                <p><input type="text"  placeholder="<?php echo $UI_mətnləri['epoçt_qutu_işarəsi'][$_COOKIE['system_language_dil']] ?>"  
                     class="input_text" name="epoçt" autocomplete="off" >
                 </p>                
                 
-                <p><input type="password" placeholder="<?php echo $UI_mətnləri['şifrə'][$_COOKIE['system_language_dil']] ?>"  
+                <p><input type="password" placeholder="<?php echo $UI_mətnləri['şifrə_qutu_işarəsi'][$_COOKIE['system_language_dil']] ?>"  
                     class="input_text" name="şifrə" autocomplete="off" >
                 </p> 
                 
@@ -74,10 +75,11 @@
                     <input type="submit" value="<?php echo $UI_mətnləri['daxil_ol_düyməsi'][$_COOKIE['system_language_dil']] ?>" class="submit">                
                 </p> 
                 
+                <!-- 
                 <p><a href="şifrəmi_unutdum.php">
-                    <?php echo $UI_mətnləri['şifrəmi_unutdum'][$_COOKIE['system_language_dil']] ?>   
+                    echo $UI_mətnləri['şifrəmi_unutdum'][$_COOKIE['system_language_dil']] 
                     </a>
-                </p>                
+                </p>-->
                 
                 <p><a href="qeydiyyat.php">
                     <?php echo $UI_mətnləri['qeydiyyat_düyməsi'][$_COOKIE['system_language_dil']] ?>
