@@ -13,7 +13,7 @@ public class TestKitabxana {
 
     public static boolean MP3_SES_OYNA = true; // Parameter to toggle sound playback
     public static final String VLC_EXE_PATH = "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"; // Path to VLC executable
-    public static final String MP3_QOVLUGU = "D:\\Code\\Azerbaijan_Code\\azerbaycan_test_kurslar_kodlari\\test_avto_resurslar\\mp3\\"; // Path to VLC executable
+    public static final String MP3_QOVLUGU = "D:\\Code\\Azerbaijan_Code\\azerbaycan_test_kurslar_kodlari\\resurslar\\mp3\\"; // Path to VLC executable
 
 
     public static void Brauzeri_orta_monitora_dasi(WebDriver sürücü, int monitor_numresi) {

@@ -24,7 +24,7 @@ public class Emrler_ve_Exceptionler {
 
             // Selenium brauzer sürücüsünü işə salırıq
             sürücü = new ChromeDriver();
-            Thread.sleep(1000);
+
             test_ediləcək_veb_tətbiqin_əsas_səhifəsini_aç();
 
             əgər_reklam_popup_u_varsa_onu_bağla();
@@ -219,18 +219,27 @@ public class Emrler_ve_Exceptionler {
     } //func
 
     public static void əgər_reklam_popup_u_varsa_onu_bağla() {
-        int sehifede_popup_sayi = sürücü.findElements(By.xpath("//*[@class = 'modal fade show']")).size();
-        System.out.println("sehifede_popup_sayi = "+ sehifede_popup_sayi);
+        TestKitabxana.MP3_oyna("Bəzən əsas ekranda reklam popup açılır; varsa, onu bağlayıram");
 
-        if (sehifede_popup_sayi >= 1) {
+        try {
+            WebElement sehifede_popup_element= new WebDriverWait(sürücü, Duration.ofSeconds(5)).until(
+                    ExpectedConditions.elementToBeClickable((
+                            By.xpath("//*[@class = 'modal fade show']"))));
+
+            //int sehifede_popup_sayi = sürücü.findElements(By.xpath("//*[@class = 'modal fade show']")).size();
+            //System.out.println("sehifede_popup_sayi = "+ sehifede_popup_sayi);
+
             TestKitabxana.MP3_oyna("Pop-up ekranı tapdım. Onu bağlayıram");
 
             WebElement reklam_popup_in_bagla_X_duymesi = sürücü.findElement(
-                    By.xpath("//*[@class = 'modal fade show']//button[@class = 'close']"));
+                        By.xpath("//*[@class = 'modal fade show']//button[@class = 'close']"));
             reklam_popup_in_bagla_X_duymesi.click();
+        } catch (Exception e) {
+            System.out.println("Pop-up ekranı tapılmadı");
+            TestKitabxana.MP3_oyna("Pop-up ekranı tapılmadı");
         }
-        else // = 0
-            System.out.println("Pop-up ekranı tapılmadi");
+
+
     } // func
 
 } // end class
