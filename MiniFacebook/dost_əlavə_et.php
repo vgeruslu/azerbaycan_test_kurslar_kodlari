@@ -45,11 +45,22 @@
 		}
 	}
 
+	// butov istifadecileri, istisna olmaqla cari user, listele
+	$query="SELECT count(*) AS istifadeciler_sayi_bu_user_yox
+			FROM tbl_istifadəçi
+			WHERE epoçt != '" . $cari_user_ID_epoçt . "'";
 
-	echo $UI_mətnləri['bütün_istifadəçilərin_siyahısı_mətn'][$_COOKIE['system_language_dil']] .":<br><br>";
+	$stmt = $db_link->stmt_init();
+	$stmt->prepare($query);
+	$stmt->execute();
+	$stmt->store_result();
 
+	$stmt->bind_result($istifadeciler_sayi_bu_user_yox);
+	$stmt->fetch();
+	
+	echo "<div>". $UI_mətnləri['bütün_istifadəçilərin_siyahısı_mətn'][$_COOKIE['system_language_dil']] ." (" . $istifadeciler_sayi_bu_user_yox . "):</div><br>";
 
-	// Get all 's friends list
+	// butov istifadecileri, istisna olmaqla cari user, listele
 	$query="SELECT ad, soyad, epoçt
 			FROM tbl_istifadəçi
 			WHERE epoçt != '" . $cari_user_ID_epoçt . 
@@ -71,8 +82,12 @@
 		}
 
 		  
-		echo "<a href='istifadəçi_profili.php?istifadəçi_epoçt=". $digər_istifadəçi_epoçt . "'>
-			<img src=' " . $şəkil_fayl . "'><br>".  $digər_istifadəçi_ad . " " . $digər_istifadəçi_soyad. "</a><br>";
+		echo "<div name='istifadəçi'><a href='istifadəçi_profili.php?istifadəçi_epoçt=". $digər_istifadəçi_epoçt . "'>
+			<img src=' " . $şəkil_fayl . "'><br>
+				<div name='istifadəçi_tam_adi'>".  
+				$digər_istifadəçi_ad . " " . $digər_istifadəçi_soyad. 
+				"</div>
+			</a>";
 		
 		// check if te user in this loop iteration is already a friend of the logged in user or not
 		$query2 = 	"SELECT * FROM tbl_dostluq_münasibətləri
@@ -88,17 +103,19 @@
 		$stmt2->execute();
 		$stmt2->store_result();
 		
-		if($stmt2->num_rows==1)  // meaning that at least a friend relationship
-							// so do NOT show the "Add Friend"
-			echo "<font style='color:#6C757D' size='-1'>".
+		echo "<input type='hidden' name='dost_epoçt' value='" . $digər_istifadəçi_epoçt."'>";
+
+		if($stmt2->num_rows==1)  // yeni iki nefer dostdurlar
+			echo "<font style='color:#6C757D' size='-1'><div name='dostdurlar_ya_yox'>".
 				$UI_mətnləri['artıq_dostunuz'][$_COOKIE['system_language_dil']].
-				"</font>";			
-		else
-			echo "<font size='-1'> <a href='dost_əlavə_et.php?əlavə_olunacaq_dost_İD=$digər_istifadəçi_epoçt'>".
+				"</div></font>";			
+		else // dost deyiller
+			echo "<font size='-1'> <a href='dost_əlavə_et.php?əlavə_olunacaq_dost_İD=$digər_istifadəçi_epoçt'>
+				<div name='dostdurlar_ya_yox'>".
 				$UI_mətnləri['dostluq_sorğusu_düyməsi'][$_COOKIE['system_language_dil']].
-				"</a></font>";
+				"</div></a></font>";
 			
-		echo"<hr>";
+		echo"</div><hr>";
 	}
 ?>
 

@@ -110,12 +110,14 @@
         ], 
         
         'dostluq_sorğusu_düyməsi' => [
-            'AZ' => "Dostluq sorğusu göndər",
-            'EN' => "Send friendship request",
+            'AZ' => "Dost ol",
+            'EN' => "Be friends",
+            # 'AZ' => "Dostluq sorğusu göndər",
+            # 'EN' => "Send friendship request",
         ],    
         
         'artıq_dostunuz' => [
-            'AZ' => "Artıq dostunuz",
+            'AZ' => "Artıq dostunuzdur",
             'EN' => "Already your friend",
         ], 
         
@@ -131,7 +133,7 @@
         ], 
         
         'epoçt_label' => [
-            'AZ' => "İstifadəçi adı / e-poçt<br>(yalnız oxumaq üçün)",
+            'AZ' => "İstifadəçi adı (e-poçt)<br>(NOT: Dəyişdirilə bilməz)",
             'EN' => "Username / email<br>(read-only)",
         ], 
         

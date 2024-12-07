@@ -3,7 +3,7 @@ package ders11_if_else;
 
 import java.util.Scanner;
 
-public class MagazaSatis {
+public class MagazaSatis_hell {
 
     public static void main(String[] args) {
         // Məhsulların qiymətləri
@@ -14,13 +14,13 @@ public class MagazaSatis {
         // İstifadəçidən məhsul miqdarı məlumatları almaq
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Almanın miqdarını daxil edin: ");
+        System.out.print("Almanın KG miqdarını daxil edin: ");
         int almaMiqdar = scanner.nextInt();
 
-        System.out.print("Bananın miqdarını daxil edin: ");
+        System.out.print("Bananın KG miqdarını daxil edin: ");
         int bananMiqdar = scanner.nextInt();
 
-        System.out.print("Kartofun miqdarını daxil edin: ");
+        System.out.print("Kartofun KG miqdarını daxil edin: ");
         int kartofMiqdar = scanner.nextInt();
 
         // Məhsullar üzrə ümumi qiymətləri hesabla
@@ -38,6 +38,7 @@ public class MagazaSatis {
         double ümumiQiymətƏDVİlə = ümumiCəmi * 1.2;
         double yekunCəmi = ümumiQiymətƏDVİlə;
 
+        //ver2:
         // Endirim tətbiq et
         double endirimMəbləği = 0.0;
         if (ümumiQiymətƏDVİlə > 50) {
@@ -47,17 +48,21 @@ public class MagazaSatis {
         } else {
             System.out.println("Endirim tətbiq edilmədi.");
         }
-        
+
         // Ətraflı çıxışı göstər
         System.out.println("\n--- Qəbz ---");
-        System.out.printf("Alma: %d x %.2f = %.2f AZN\n", almaMiqdar, almaQiymət, almaÜmumi);
-        System.out.printf("Banan: %d x %.2f = %.2f AZN\n", bananMiqdar, bananQiymət, bananÜmumi);
+        System.out.printf("Alma:   %d x %.2f = %.2f AZN\n", almaMiqdar, almaQiymət, almaÜmumi);
+        System.out.printf("Banan:  %d x %.2f = %.2f AZN\n", bananMiqdar, bananQiymət, bananÜmumi);
         System.out.printf("Kartof: %d x %.2f = %.2f AZN\n", kartofMiqdar, kartofQiymət, kartofÜmumi);
         System.out.println("-------------------------");
         System.out.printf("Ümumi cəm (ƏDV-siz): %.2f AZN\n", ümumiCəmi);
         System.out.printf("ƏDV: %.2f AZN\n", ƏDV);
+        //ver1: Endirim-siz
+        //System.out.printf("Yekun cəmi (ƏDV daxil): %.2f AZN\n", yekunCəmi);
 
+        //ver2: Endirimli
         System.out.printf("Endirim məbləği: %.2f AZN\n", endirimMəbləği);
+        //ver2:
         System.out.printf("Yekun cəmi (ƏDV və endirim daxil): %.2f AZN\n", yekunCəmi);
         System.out.println("--- Qəbz Sonu ---");
 

@@ -5,6 +5,12 @@
         // session isn't started
         session_start();
     }
+    
+    if(!isset($_COOKIE['system_language_dil'])) {
+        echo "Setting the cookie (system_language_dil)";
+        setcookie("system_language_dil", "AZ", time() + (86400 * 30), "/");
+    } 
+    
     require_once "verilənlər_bazası_bağlantısı.php";
     
     require_once "ui_mətnləri.php";
@@ -16,10 +22,6 @@
     //var_dump($_COOKIE);
     
          
-    if(!isset($_COOKIE['system_language_dil'])) {
-        echo "Setting the cookie (system_language_dil)";
-        setcookie("system_language_dil", "AZ", time() + (86400 * 30), "/");
-    } 
 
     echo "<div align='center'>
                 <img src='images/" 

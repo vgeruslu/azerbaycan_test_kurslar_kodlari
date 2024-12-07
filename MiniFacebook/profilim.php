@@ -62,7 +62,7 @@
 				
 				$stmt->bind_result($sistemde_olan_cari_şifrə);
 				$stmt->fetch();	
-				mysqli_close($db_link);
+				//mysqli_close($db_link);
 
 				if ($_POST['cari_şifrə'] != $sistemde_olan_cari_şifrə) 
 					echo "<div id='div_məlumat_mesajı' class='etibarsız'>" . 
@@ -73,7 +73,7 @@
 					$query = "UPDATE tbl_istifadəçi 
 								SET    şifrə = '" . $_POST['yeni_şifrə'] .
 								"' WHERE epoçt = '". $cari_user_ID_epoçt . "';";
-					printf("%s", $query);
+					//printf("%s", $query);
 					
 					$stmt->prepare($query);
 					$stmt->execute();

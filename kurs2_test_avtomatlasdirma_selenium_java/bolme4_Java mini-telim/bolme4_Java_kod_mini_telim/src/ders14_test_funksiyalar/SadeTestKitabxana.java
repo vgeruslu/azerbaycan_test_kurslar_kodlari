@@ -3,6 +3,7 @@ package ders14_test_funksiyalar;
 public class SadeTestKitabxana {
     public static void YoxlaBərabərOlduqlarını
             (String test_hal_adı, String gözlənən_dəyər, String gələn_dəyər) {
+
         if (gözlənən_dəyər.equals(gələn_dəyər))
             System.out.println("Test hal keçdi: " + test_hal_adı);
         else

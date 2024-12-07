@@ -61,7 +61,7 @@
 
             // Deleting user's post
             if(isset($params['silinəcək_post_İD'])){ // post_idToBeDeleted
-                echo 'silinəcək_post_İD: '. $params['silinəcək_post_İD']. '<br>';
+                //echo 'silinəcək_post_İD: '. $params['silinəcək_post_İD']. '<br>';
                 $stmt = $db_link->stmt_init();
                 $query = "DELETE FROM tbl_paylaşım 
                             WHERE post_id=". $params['silinəcək_post_İD'];
@@ -96,6 +96,7 @@
 
             // Ordering new/latest posts
             $post_id=rand(100, 1000000);
+            date_default_timezone_set('Europe/London');
             $time_now = date("Y-m-d H:i:s"); 
 
             // Inserting new post into database
@@ -108,7 +109,28 @@
             $stmt->execute();
         }
 
+        // Get COUNT of users 
+        $stmt = $db_link->stmt_init();
+        $query="SELECT count(*) as dostlar_sayi
+                FROM tbl_istifadəçi
+                WHERE tbl_istifadəçi.epoçt IN(
+                        SELECT istifadəçi2_epoçt as friend_ID FROM tbl_dostluq_münasibətləri
+                            WHERE istifadəçi1_epoçt = '" . $cari_user_ID_epoçt . 
+                "' UNION
+                SELECT istifadəçi1_epoçt as dost_ID FROM tbl_dostluq_münasibətləri
+                    WHERE istifadəçi2_epoçt = '" . $cari_user_ID_epoçt ."') ";
+                " ORDER BY ad";
+        //echo 'query: '. $query. "<br>";
+        $stmt->prepare($query);
+        $stmt->execute();
+        $stmt->store_result();
 
+        // Bind variables to prepared statement
+        $stmt->bind_result($dostlar_sayi);
+ 
+        $stmt->fetch();
+            
+            
         // Display all posts who user is friends with ???
         $stmt = $db_link->stmt_init();
         $query = "SELECT tbl_paylaşım.istifadəçi_epoçt, post_id, ad, paylaşım_mətni, tarix_saat
@@ -136,26 +158,26 @@
         echo "<table  class='center' >
             <tr>
                 <th>".$UI_mətnləri['feed_başlığı'][$_COOKIE['system_language_dil']] .":</th>
-                <th>".$UI_mətnləri['dostlar_başlığı'][$_COOKIE['system_language_dil']] .":</th>
+                <th>".$UI_mətnləri['dostlar_başlığı'][$_COOKIE['system_language_dil']] ." (". $dostlar_sayi. "):</th>
             </tr>";
         
         echo "
             <tr>
                 <td style='vertical-align:top'>";
 
-        // Display news feed column in table
-        while($stmt->fetch()){
-            printf("%s:<br>", $ad);
-            echo "<font style='color:#5C4033' size='-1'>". $paylaşım_mətni. "</font>";
-            
-            echo "<br><font style='color:#6C757D' size='-1'>". $tarix_saat. "&nbsp&nbsp</font>";
-            if($cari_user_ID_epoçt == $paylaşımın_user_ID_si) // user sadece OZ paylaşımlarıni sil biler
-                echo "<font size='-1'><a href='feed.php?silinəcək_post_İD=". $post_id. "'>".
-                $UI_mətnləri['paylaşımı_sil'][$_COOKIE['system_language_dil']] . 
-                "</a>";
+            // Display news feed column in table
+            while($stmt->fetch()){
+                printf("<div>%s:<br>", $ad);
+                echo "<font style='color:#5C4033' size='-1'>". $paylaşım_mətni. "</font>";
                 
-                echo "</font><hr>";
-        }
+                echo "<br><font style='color:#6C757D' size='-1'>". $tarix_saat. "&nbsp&nbsp</font>";
+                if($cari_user_ID_epoçt == $paylaşımın_user_ID_si) // user sadece OZ paylaşımlarıni sil biler
+                    echo "<font size='-1'><a href='feed.php?silinəcək_post_İD=". $post_id. "'>".
+                    $UI_mətnləri['paylaşımı_sil'][$_COOKIE['system_language_dil']] . 
+                    "</a>";
+                    
+                    echo "</font><hr></div>";
+            }
 
         echo "</td>";
 
@@ -180,7 +202,7 @@
 
         // Bind variables to prepared statement
         $stmt->bind_result($dost_ad, $dost_soyad, $dost_userID);
-
+        
         // Display friends list
         while($stmt->fetch()){
             $şəkil_fayl = "istifadəçi_üz_şəkilləri\\" . $dost_userID. ".jpg";
@@ -188,14 +210,18 @@
                 $şəkil_fayl  = "istifadəçi_üz_şəkilləri\\şəkil_yox_ag.jpg";
             }
             
-            echo"<a href='istifadəçi_profili.php?istifadəçi_epoçt=". $dost_userID . "'>
+            echo "<div name='dost_karti'>
+            <input type='hidden' name='dost_epoçt' value='" . $dost_userID."'>
+            <a href='istifadəçi_profili.php?istifadəçi_epoçt=". $dost_userID . "'>
                 <img src=' " . $şəkil_fayl . "' ><br>";
                 
-            printf("%s %s</a><br>", $dost_ad, $dost_soyad);
+                echo "<div name='dost_ad_soyad'>" . $dost_ad . " "  .$dost_soyad . "</div>"; 
+            printf("</a>
+                   </div>");
             
-            echo " <font size='-1'><a href='feed.php?silinəcək_dost_İD=". $dost_userID. "'>" .
+            echo " <font size='-1'><div name='dostu_cixar'><a href='feed.php?silinəcək_dost_İD=". $dost_userID. "'>" .
                 $UI_mətnləri['dostluqdan_çıxar_düyməsi'][$_COOKIE['system_language_dil']] .
-                "</a></font>";
+                "</a></div></font>";
             echo "<hr>";//<br>";
         }
         mysqli_close($db_link);

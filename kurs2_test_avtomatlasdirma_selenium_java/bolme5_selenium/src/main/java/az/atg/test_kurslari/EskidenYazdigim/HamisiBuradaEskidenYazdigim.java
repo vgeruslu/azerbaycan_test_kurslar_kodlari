@@ -38,7 +38,7 @@ public class HamisiBuradaEskidenYazdigim {
             məhsul_qiymeti = məhsul_qiymeti.replaceAll("\\s+", "");
             System.out.println("məhsul_qiymeti = " + məhsul_qiymeti);
 
-            if (!TestKitabxana.IsElementVisibleInViewport(driver, məhsul))
+            if (!TestKitabxana.ElementEkrandaGörünürMu(driver, məhsul))
                 ((JavascriptExecutor) driver).executeScript(
                         "arguments[0].scrollIntoView();", məhsul);
 

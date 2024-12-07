@@ -49,8 +49,7 @@ if (qəhvə.boşdur()) {
 
 String test_ediləcək_veb_tətbiqin_url_i= "https://www.hamisiburada.az";
 
-int ekrdna_obyektləri_gözləmə_vaxtı = 10; // saniyə 
-
 System.out.println("Test ediləcək veb tətbiqin keçidi: " + url);
 
+int əkranda_obyektləri_gözləmə_vaxtı = 10; // saniyə 
 

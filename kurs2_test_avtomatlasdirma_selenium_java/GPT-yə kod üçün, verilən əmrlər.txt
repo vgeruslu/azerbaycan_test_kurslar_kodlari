@@ -1,3 +1,12 @@
+For Selenium + JUnitç give some boiler plate Java code, for testing a veb application 
+In the code, all texts including comments, labels, etc should be in Azerbaijani
+
+For this very simple HTML page under test, write a very simple Java Selenium code, showing NoSuchElementException 
+ElementNotInteractableException 
+Elementlə qarşılıqlı əlaqə mümkün deyil istisnası
+Give a very simple Java Selenium code example for ElementNotInteractableException
+In the code, all texts including comments, labels, etc should be in Azerbaijani
+
 Write a simple Java Selenium code, showing usage of Selenium Browser Control Commands:
 get(String url)	
 getTitle()	

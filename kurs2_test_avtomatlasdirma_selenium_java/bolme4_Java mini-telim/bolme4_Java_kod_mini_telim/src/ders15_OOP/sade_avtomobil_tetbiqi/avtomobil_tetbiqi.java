@@ -15,6 +15,14 @@ public class avtomobil_tetbiqi {
 
         // digər obyektinin məlumatını göstəririk
         eldarınToyotası.avtomobilMəlumatınıÇapEt();
+
+        // digər bir obyekt yaradırıq
+        Avtomobil yeniMercedes =
+                new Avtomobil("Mercedes", "C220", 2025, 65000);
+
+        // digər obyektinin məlumatını göstəririk
+        yeniMercedes.avtomobilMəlumatınıÇapEt();
+
     }
 
 }

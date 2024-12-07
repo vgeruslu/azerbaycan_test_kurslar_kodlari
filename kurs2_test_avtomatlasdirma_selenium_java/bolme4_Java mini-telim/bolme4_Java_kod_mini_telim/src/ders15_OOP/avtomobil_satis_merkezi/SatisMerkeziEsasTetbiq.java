@@ -9,13 +9,16 @@ public class SatisMerkeziEsasTetbiq {
 
     public static void ilkinMəlumatlarıYüklə() {
         // Verilənlər bazası istifadə etməyəcəyik. Sistem hər dəfə işə salındıqda, eyni iki maşının məlumatları sistem bazasında yüklənməlidir
-        SatiliqAvtomobil avtomobil1 = new SatiliqAvtomobil("Toyota", "Camry", 2020, 15000) ;
-        SatiliqAvtomobil avtomobil2 = new SatiliqAvtomobil("Honday", "Accord", 2021, 31000) ;
+        SatiliqAvtomobil avtomobil1 = new SatiliqAvtomobil(
+                "Toyota", "Camry", 2020, 15000) ;
+        SatiliqAvtomobil avtomobil2 = new SatiliqAvtomobil(
+                "Honda", "Accord", 2021, 31000) ;
 
         satiliqAvtomobillər.add(avtomobil1);
         satiliqAvtomobillər.add(avtomobil2);
         System.out.print("Sistem işə salınır indi, və iki maşının məlumatları sistem bazasında yükləndi");
     }
+
     public static void main(String[] args) {
         ilkinMəlumatlarıYüklə();
         // menyu
@@ -34,25 +37,25 @@ public class SatisMerkeziEsasTetbiq {
             // Seçimə görə funksiyaları çağırırıq
             switch (seçim) {
                 case 1:
-                    systemBazasınaMaşınƏlavəEt();
+                    m1_systemBazasınaMaşınƏlavəEt();
                     break;
                 case 2:
-                    maşınSatışQiymətiniArtır();
+                    m2_maşınSatışQiymətiniArtır();
                     break;
                 case 3:
-                    maşınSatışQiymətiniAzalt();
+                    m3_maşınSatışQiymətiniAzalt();
                     break;
                 case 4:
-                    maşınSatıldığınıQeydEt();
+                    m4_maşınSatıldığınıQeydEt();
                     break;
                 case 5:
-                    satılmışMaşınlarınSiyahısı();
+                    m5_satılmışMaşınlarınSiyahısı();
                     break;
                 case 6:
-                    satılmamışMaşınlarınSiyahısı();
+                    m6_satılmamışMaşınlarınSiyahısı();
                     break;
                 case 7:
-                    bütovMaşınlarınSiyahısı();
+                    m7_bütovMaşınlarınSiyahısı();
                 break;
                 /* case 8:
                     break;
@@ -62,92 +65,14 @@ public class SatisMerkeziEsasTetbiq {
                     System.out.println("Proqramdan çıxılır.");
                     break;
                 default:
-                    System.out.println("Yanlış seçim! Yenidən cəhd edin.");
+                    System.out.println("❌ Yanlış seçim! Yenidən cəhd edin.");
             }
         } while (seçim != 0);
 
         scanner.close();
-    }
+    } // end main
 
-    // satılmamış Maşınların Siyahısı
-    private static void satılmamışMaşınlarınSiyahısı() {
-        System.out.println("\nSatılmamış maşınlar:");
-        for (SatiliqAvtomobil avtomobil : satiliqAvtomobillər) {
-            if (!avtomobil.satıldı) {
-                avtomobil.avtomobilMəlumatınıÇapEt();
-            }
-        }
-    }
-
-    // bütov Maşınların Siyahısı
-    private static void bütovMaşınlarınSiyahısı() {
-        System.out.println("\nBütün maşınlar:");
-        int sayğac = 0;
-        for (SatiliqAvtomobil avtomobil : satiliqAvtomobillər) {
-            System.out.println("indeks = " + sayğac);
-            avtomobil.avtomobilMəlumatınıÇapEt();
-            sayğac ++;
-        }
-    }
-
-    // satılmış Maşınların Siyahısı
-    private static void satılmışMaşınlarınSiyahısı() {
-        System.out.println("\nSatılmış maşınlar:");
-        for (SatiliqAvtomobil avtomobil : satiliqAvtomobillər) {
-            if (avtomobil.satıldı) {
-                avtomobil.avtomobilMəlumatınıÇapEt();
-            }
-        }
-    }
-
-    // maşın Satıldığını Qeyd Et
-    private static void maşınSatıldığınıQeydEt() {
-        Scanner scanner = new Scanner(System.in);
-        bütovMaşınlarınSiyahısı();
-        System.out.print("Satılmış kimi qeyd etmək üçün maşının nömrəsini (siyahıdakı indeks) daxil edin: ");
-        int index = scanner.nextInt();
-
-        if (index >= 0 && index < satiliqAvtomobillər.size()) {
-            satiliqAvtomobillər.get(index).satıldığınıQeydEt();
-            System.out.println("Maşın satılmış kimi qeyd edildi.");
-        } else {
-            System.out.println("Yanlış indeks!");
-        }
-    }
-
-    private static void maşınSatışQiymətiniArtır () {
-        Scanner scanner = new Scanner(System.in);
-        bütovMaşınlarınSiyahısı();
-        System.out.print("Qiyməti artırmaq üçün maşının nömrəsini daxil edin: ");
-        int index = scanner.nextInt();
-
-        if (index >= 0 && index < satiliqAvtomobillər.size()) {
-            System.out.print("Artırılacaq məbləği daxil edin: ");
-            int miqdar = scanner.nextInt();
-            satiliqAvtomobillər.get(index).satışQiymətiniArtır(miqdar);
-            System.out.println("Maşının satış qiyməti artırıldı.");
-        } else {
-            System.out.println("Yanlış indeks!");
-        }
-    }
-
-    private static void  maşınSatışQiymətiniAzalt() {
-        Scanner scanner = new Scanner(System.in);
-        bütovMaşınlarınSiyahısı();
-        System.out.print("Qiyməti azaltmaq üçün maşının nömrəsini daxil edin: ");
-        int index = scanner.nextInt();
-
-        if (index >= 0 && index < satiliqAvtomobillər.size()) {
-            System.out.print("Azaldılacaq məbləği daxil edin: ");
-            int miqdar = scanner.nextInt();
-            satiliqAvtomobillər.get(index).satışQiymətiniAzalt(miqdar);
-            System.out.println("Maşının satış qiyməti azaldıldı.");
-        } else {
-            System.out.println("Yanlış indeks!");
-        }
-    }
-
-    private static void systemBazasınaMaşınƏlavəEt() {
+    private static void m1_systemBazasınaMaşınƏlavəEt() {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt the user for each field of the Avtomobil class
@@ -164,12 +89,92 @@ public class SatisMerkeziEsasTetbiq {
         int satışQiyməti = scanner.nextInt();
 
         // Create a new Avtomobil object
-        SatiliqAvtomobil yeniAvtomobil = new SatiliqAvtomobil(marka, model, istehsalIli, satışQiyməti);
+        SatiliqAvtomobil yeniAvtomobil = new
+                SatiliqAvtomobil(marka, model, istehsalIli, satışQiyməti);
 
         // Add the new object to the satiliqAvtomobillər Vector
         satiliqAvtomobillər.add(yeniAvtomobil);
-        System.out.println("Yeni avtomobil uğurla əlavə edildi!");
+        System.out.println("✅ Yeni avtomobil uğurla əlavə edildi!");
     }
+    private static void m2_maşınSatışQiymətiniArtır() {
+        Scanner scanner = new Scanner(System.in);
+        m7_bütovMaşınlarınSiyahısı();
+        System.out.print("Qiyməti artırmaq üçün maşının nömrəsini daxil edin: ");
+        int index = scanner.nextInt();
+
+        if (index >= 0 && index < satiliqAvtomobillər.size()) {
+            System.out.print("Artırılacaq məbləği daxil edin: ");
+            int miqdar = scanner.nextInt();
+            satiliqAvtomobillər.get(index).satışQiymətiniArtır(miqdar);
+            System.out.println("✅ Maşının satış qiyməti artırıldı.");
+        } else {
+            System.out.println("❌ Yanlış indeks! ❌");
+        }
+    }
+
+    private static void m3_maşınSatışQiymətiniAzalt() {
+        Scanner scanner = new Scanner(System.in);
+        m7_bütovMaşınlarınSiyahısı();
+        System.out.print("Qiyməti azaltmaq üçün maşının nömrəsini daxil edin: ");
+        int index = scanner.nextInt();
+
+        if (index >= 0 && index < satiliqAvtomobillər.size()) {
+            System.out.print("Azaldılacaq məbləği daxil edin: ");
+            int miqdar = scanner.nextInt();
+            satiliqAvtomobillər.get(index).satışQiymətiniAzalt(miqdar);
+            System.out.println("✅ Maşının satış qiyməti azaldıldı.");
+        } else {
+            System.out.println("❌ Yanlış indeks! ❌");
+        }
+    }
+
+    // maşın Satıldığını Qeyd Et
+    private static void m4_maşınSatıldığınıQeydEt() {
+        m7_bütovMaşınlarınSiyahısı();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Satılmış kimi qeyd etmək üçün maşının nömrəsini (siyahıdakı indeks) daxil edin: ");
+        int index = scanner.nextInt();
+
+        if (index >= 0 && index < satiliqAvtomobillər.size()) {
+            satiliqAvtomobillər.get(index).satıldığınıQeydEt();
+            System.out.println("✅ Maşın satılmış kimi qeyd edildi.");
+        } else {
+            System.out.println("❌ Yanlış indeks! ❌");
+        }
+    }
+
+    // satılmış Maşınların Siyahısı
+    private static void m5_satılmışMaşınlarınSiyahısı() {
+        System.out.println("\nSatılmış maşınlar:");
+        for (SatiliqAvtomobil avtomobil : satiliqAvtomobillər) {
+            if (avtomobil.satıldı) {
+                avtomobil.avtomobilMəlumatınıÇapEt();
+            }
+        }
+    }
+
+    // satılmamış Maşınların Siyahısı
+    private static void m6_satılmamışMaşınlarınSiyahısı() {
+        System.out.println("\nSatılmamış maşınlar:");
+        for (SatiliqAvtomobil avtomobil : satiliqAvtomobillər) {
+            if (!avtomobil.satıldı) {
+                avtomobil.avtomobilMəlumatınıÇapEt();
+            }
+        }
+    }
+
+    // bütov Maşınların Siyahısı
+    private static void m7_bütovMaşınlarınSiyahısı() {
+        System.out.println("\nBütün maşınlar:");
+        int sayğac = 0;
+        for (SatiliqAvtomobil avtomobil : satiliqAvtomobillər) {
+            System.out.println("indeks = " + sayğac);
+            avtomobil.avtomobilMəlumatınıÇapEt();
+            sayğac ++;
+        }
+    }
+
 
     // Menyu göstərən funksiya
     public static void menyunuGöstər() {

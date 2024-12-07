@@ -11,6 +11,6 @@ define('DB_Name', 'mini_facebook');
 // Connect to database & check conneciton
 $db_link = mysqli_connect(DB_Server, DB_Username, DB_Password, DB_Name);
 if($db_link === false){
-    die("ERROR: Could not connect to the database". mysqli_connect_err());
+    die("Xəta: Verilen bazasina baglanti yaranmadi". mysqli_connect_err());
     }
 ?>

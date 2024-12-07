@@ -2,6 +2,7 @@ package az.atg.test_kurslari.ders23_brauzer_idareetme_emrleri;
 
 import KitabxanalarLibs.TestKitabxana;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,20 +18,22 @@ public class BrauzerIdareetmeEmrleri_Example_com {
 
         // Brauzer sürücüsünü işə salırıq
         WebDriver sürücü = new ChromeDriver();
+        TestKitabxana.brauzerin_mövqe_və_ölçüsünü_dəyiş(sürücü, -1000, 100, 1000, 600);
 
         try {
             // get(String url)
             // 1. Verilən URL-i açırıq
-            sürücü.get("https://www.example.com");
+            sürücü.get("https://aztu.edu.azzzz");
             System.out.println("Səhifə uğurla açılmış.");
-            TestKitabxana.Brauzeri_orta_monitora_dasi(sürücü, 3);
 
             // getTitle()
             // 2. Cari səhifənin başlığını əldə edirik
             TestKitabxana.MP3_oyna("Səhifənin başlığını oxuyub və yoxlayıram");
             String başlıq = sürücü.getTitle();
             System.out.println("Səhifənin başlığı: " + başlıq);
-            assertTrue(başlıq.contains("Example"));
+            // YOXLAMA
+            assertTrue(başlıq.contains("Azərbaycan Texniki Universiteti"));
+
             TestKitabxana.YoxlamaUğurlu();
 
             // getCurrentUrl()
@@ -39,7 +42,7 @@ public class BrauzerIdareetmeEmrleri_Example_com {
             String cariURL = sürücü.getCurrentUrl();
             System.out.println("Cari URL: " + cariURL);
             TestKitabxana.MP3_oyna("Yoxlama edirəm-Səhifənin internet adresində, gözlənilən mətn olmalı");
-            assertTrue(cariURL.contains("example.com"));
+            assertTrue(cariURL.contains("aztu.edu.az"));
             TestKitabxana.YoxlamaUğurlu();
 
             // getPageSource()
@@ -72,13 +75,20 @@ public class BrauzerIdareetmeEmrleri_Example_com {
             TestKitabxana.MP3_oyna("Avtomatlaşdırılmış test skriptimiz bitdi");
 
 
-        } catch (Exception e) {
-            System.out.println("Xəta baş verdi: " + e.toString());//.getMessage());
-        }catch (AssertionError ae) {
+        }
+        catch (NoSuchWindowException nswe) {
+            System.out.println("❌ İnternet browser bağlanmış. Test otomasyon də çıxış edir");
+            TestKitabxana.MP3_oyna("İnternet browser bağlanmış. Test otomasyon də çıxış edir");
+            return;
+        }
+        catch (AssertionError ae) {
             TestKitabxana.YoxlamaUğursuz();
         }
+        catch (Exception e) {
+            System.out.println("❌ Xəta baş verdi: " + e.toString());//.getMessage());
+        }
         /*finally {
-            // 6. Brauzerin bütün sekmelerini bağlayırıq
+            // 6. Brauzeri bağlayırıq
             sürücü.quit();
             System.out.println("Bütün brauzer sekmeleri bağlandı.");
             TestKitabxana.MP3_oyna("Bütün brauzer indi bağlanış olmalı");

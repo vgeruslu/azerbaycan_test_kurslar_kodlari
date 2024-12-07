@@ -91,7 +91,7 @@
     <div class="div_center">
 
         <h2>
-            <?php echo $UI_mətnləri['qeydiyyat_keçin_səhifə_başlığı'][$_COOKIE['system_language_dil']] ?>
+            <div><?php echo $UI_mətnləri['qeydiyyat_keçin_səhifə_başlığı'][$_COOKIE['system_language_dil']] ?></div>
         </h2>
         
 		<!--Start form-->   <!--Change username to tbl_user ?!!!-->

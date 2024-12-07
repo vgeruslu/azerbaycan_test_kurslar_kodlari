@@ -1,4 +1,4 @@
-package ders11_if_else.qehve_tetbiqi;
+package ders15_OOP.qehve_tetbiqi;
 
 public class EsasSinifQehveTetbiqi {
     public static void main(String[] args) {

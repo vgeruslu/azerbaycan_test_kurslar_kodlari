@@ -8,15 +8,16 @@ public class IstisnaHallar {
 
     public static void main(String[] args) {
 
-        SıfıraBölməNümunəsi();
-        RəqəmFormatıNümunəsi();
-        FaylOxumaNümunəsi();
-        MassivİndeksNümunəsi();
-        BirdənÇoxİstisnaNümunəsi();
-        NullPointerNümunəsi ();
+        //SıfıraBölməIstisnaNümunəsi();
+        //RəqəmFormatıIstisnaNümunəsi();
+        //FaylOxumaIstisnaNümunəsi();
+        //MassivArrayİndeksIstisnaNümunəsi();
+        //BirdənÇoxİstisnaIstisnaNümunəsi();
+        NullPointerIstisnaNümunəsi ();
+
     }
 
-    public static void SıfıraBölməNümunəsi() {
+    public static void SıfıraBölməIstisnaNümunəsi() {
         System.out.println("------------------\n" +
                 "Sıfıra bölmə nümunəsi: ");
 
@@ -26,55 +27,76 @@ public class IstisnaHallar {
             int nəticə = rəqəm1 / rəqəm2; // Bu kod sətri istisna hal atacaq
             System.out.println("Nəticə: " + nəticə);
         } catch (ArithmeticException e) {
-            System.out.println("Xəta: Sıfıra bölmə mümkün deyil.");
+            System.out.println("❌İstisna hal: Sıfıra bölmə mümkün deyil.");
         }
     }
     //--------------------------------------------------------------
-    public static void RəqəmFormatıNümunəsi () {
+    public static void RəqəmFormatıIstisnaNümunəsi () {
         System.out.println("------------------\n" +
                 "Rəqəm Formatı nümunəsi: ");
 
         Scanner scanner = new Scanner(System.in);
+        boolean tam_ədəd_daxil_edildi = false;
+
+        while (! tam_ədəd_daxil_edildi) { // ! = NOT = menfi
+            try {
+                System.out.print("Bir tam ədəd daxil edin: "); // 2, 3 ... 1.2 QEBUL deyil!
+                String istifadəçiGirişi = scanner.nextLine();
+                int rəqəm = Integer.parseInt(istifadəçiGirişi);
+                        // Istisna burada yarana biler..
+                        // eger yaransa, kod icrasi burada durub,
+                        // ve icra CATCH blok'a atilacaq
+                System.out.println("Daxil etdiyiniz ədəd: " + rəqəm);
+                tam_ədəd_daxil_edildi = true;
+            } catch (NumberFormatException e) {
+                System.out.println("❌İstisna hal: Düzgün formatda rəqəm daxil etmədiniz.");
+            }
+        } // end of while
+    }
+    //--------------------------------------------------------------
+    private static void textFayldanOxuVəƏkranaYaz(String fayl_ismi){
         try {
-            System.out.print("Bir tam ədəd daxil edin: ");
-            String istifadəçiGirişi = scanner.nextLine();
-            int rəqəm = Integer.parseInt(istifadəçiGirişi); // Xəta atacaqsa, bu sətirdədir
-            System.out.println("Daxil etdiyiniz ədəd: " + rəqəm);
-        } catch (NumberFormatException e) {
-            System.out.println("Xəta: Düzgün formatda rəqəm daxil etmədiniz.");
+            File fayl = new File(fayl_ismi);
+            Scanner faylOxuyucu = new Scanner(fayl); // bu kod sətri İSTİSNA ata bilər !
+            // əgər yaransa, direkt sətir 68 gedəcək kod icrası
+            System.out.println("✅Fayl (" + fayl_ismi + ") tapıldı. " +
+                    "Onun məzmununu oxuyub, ekranda yazıram...");
+            while (faylOxuyucu.hasNextLine())
+                System.out.println(faylOxuyucu.nextLine());
+
+            faylOxuyucu.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("❌ İstisna hal: Fayl (" + fayl_ismi + ") tapılmadı. ");
         }
     }
     //--------------------------------------------------------------
-    public static void FaylOxumaNümunəsi () {
+    public static void FaylOxumaIstisnaNümunəsi () {
         System.out.println("------------------\n" +
                 "Fayl Oxuma nümunəsi: ");
 
-        try {
-            File fayl = new File("mövcud_olmayan_fayl.txt");
-            Scanner faylOxuyucu = new Scanner(fayl);
-            while (faylOxuyucu.hasNextLine()) {
-                System.out.println(faylOxuyucu.nextLine());
-            }
-            faylOxuyucu.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Xəta: Fayl tapılmadı. " +
-                    "Zəhmət olmasa düzgün fayl adı daxil edin.");
-        }
+        textFayldanOxuVəƏkranaYaz("mövcud_olmayan_fayl.txt");
+        textFayldanOxuVəƏkranaYaz(
+                "src\\ders16_istisna_idare_etmesi\\mövcud_fayl.txt");
     }
     //--------------------------------------------------------------
-    public static void MassivİndeksNümunəsi () {
+    public static void MassivArrayİndeksIstisnaNümunəsi() {
         System.out.println("------------------\n" +
                 "Massiv (array) indeks nümunəsi: "); // Array Index Example
 
-        int[] massiv = {1, 2, 3, 4, 5};
+        char[] massiv = {'B', 'a', 'k', 'ı'};
+            // 4-xanalı bir hərf (Character) array yaradırıq
+        int i=0;
         try {
-            System.out.println("Massivin 10-cu elementi: " + massiv[10]); // Xəta burda baş verir
+            for (i=0; i<6; i++)
+                System.out.println("Massivin [" + i + "]-cu elementi: "
+                        + massiv[i]); // Səhv burda baş verir
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Xəta: Massivin göstərilən indeksi mövcud deyil.");
+            System.out.println("❌İstisna hal: Verilen massiv indeksi ("
+                    + i + "), həddindən artıqdir.");
         }
     }
     //--------------------------------------------------------------
-    public static void BirdənÇoxİstisnaNümunəsi () {
+    public static void BirdənÇoxİstisnaIstisnaNümunəsi () {
         System.out.println("------------------\n" +
                 "Birdən çox istisna nümunəsi: ");
 
@@ -90,22 +112,22 @@ public class IstisnaHallar {
             }
             faylOxuyucu.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Xəta: Fayl tapılmadı.");
+            System.out.println("❌İstisna hal: Fayl tapılmadı.");
         } catch (Exception e) {
-            System.out.println("Xəta: Gözlənilməyən bir problem baş verdi: " + e.getMessage());
+            System.out.println("❌İstisna hal: Gözlənilməyən bir problem baş verdi: " + e.getMessage());
         }
     }
     //--------------------------------------------------------------
-    public static void NullPointerNümunəsi () {
+    public static void NullPointerIstisnaNümunəsi () {
         System.out.println("------------------\n" +
                 "Sıfıra bölmə nümunəsi: ");
 
-        String mətn = null;
+        String mətn = null; // "Gəncə";
         try {
-            System.out.println("Mətn uzunluğu: " + mətn.length()); // Xəta atacaq
+            System.out.println("Mətn uzunluğu: " + mətn.length() + " hərf"); // Səhv atacaq
         } catch (NullPointerException e) {
-            System.out.println("Xəta: Mətn null olduğu üçün uzunluğu yoxlanıla bilməz.");
+            System.out.println("❌İstisna hal: Mətn NULL olduğu üçün, uzunluğu yoxlanıla bilməz.");
         }
-    }
+    } // end funk
 
 } // class

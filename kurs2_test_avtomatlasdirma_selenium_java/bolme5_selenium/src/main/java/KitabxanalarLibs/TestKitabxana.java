@@ -1,23 +1,35 @@
 package KitabxanalarLibs;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Point;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class TestKitabxana {
 
-    public static boolean MP3_SES_OYNA = true; // Parameter to toggle sound playback
+    public static boolean MP3_SƏS_OYNA = true; // Parameter to toggle sound playback
     public static final String VLC_EXE_PATH = "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"; // Path to VLC executable
-    public static final String MP3_QOVLUGU = "D:\\Code\\Azerbaijan_Code\\azerbaycan_test_kurslar_kodlari\\resurslar\\mp3\\"; // Path to VLC executable
+    public static final String MP3_QOVLUĞU = "D:\\Code\\Azerbaijan_Code\\azerbaycan_test_kurslar_kodlari\\resurslar\\mp3\\"; // Path to VLC executable
 
 
-    public static void Brauzeri_orta_monitora_dasi(WebDriver sürücü, int monitor_numresi) {
+    public static void brauzerin_mövqe_və_ölçüsünü_dəyiş(WebDriver sürücü,
+                                                         int mövqe_x,
+                                                         int mövqe_y,
+                                                         int ölçü_en,
+                                                         int ölçü_boy) {
+        //System.out.println("ⓘ Əvvəl: Mövqeyi (position) = " + sürücü.manage().window().getPosition());
+        //System.out.println("ⓘ Əvvəl: Pencere ölçüsü = " + sürücü.manage().window().getSize());
 
+        sürücü.manage().window().setPosition(new Point(mövqe_x, mövqe_y));
+        //System.out.println("ⓘ Sonra: Mövqeyi (position) = " + sürücü.manage().window().getPosition());
+        sürücü.manage().window().setSize(new Dimension(ölçü_en, ölçü_boy));
+        //System.out.println("ⓘ Sonra: Pencere ölçüsü = " + sürücü.manage().window().getSize());
+
+        /*
         try {
             // 1. Monitorlar haqqında məlumat əldə edirik
             GraphicsEnvironment mühit = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -25,7 +37,7 @@ public class TestKitabxana {
 
             if (monitorlar.length < 2) {
                 System.out.println("İki və ya daha çox monitor tələb olunur!");
-                sürücü.quit();
+                //sürücü.quit();
                 return;
             }
 
@@ -36,14 +48,14 @@ public class TestKitabxana {
                 int w = monitorKoordinatları.width;
                 int h = monitorKoordinatları.height;
 
-                System.out.println("monitor Koordinatları[" + i +"]: x=" + x + ", y=" + y + ", w=" + w + ", h=" + h);
+                System.out.println("ⓘ Monitor Koordinatları[" + i +"]: x=" + x + ", y=" + y + ", w=" + w + ", h=" + h);
             }
             // 2. İkinci monitorun koordinatlarını tapırıq
             Rectangle ikinciMonitorunKoordinatları = monitorlar[1].getDefaultConfiguration().getBounds();
             int x2 = ikinciMonitorunKoordinatları.x; // İkinci monitorun başlanğıc X koordinatı
             int y2 = ikinciMonitorunKoordinatları.y; // İkinci monitorun başlanğıc Y koordinatı
 
-            System.out.println("2ci monitorun koordinatları: x2=" + x2 + ", y2=" + y2);
+            System.out.println("ⓘ 2ci monitorun koordinatları: x2=" + x2 + ", y2=" + y2);
 
             int monitor2_zoom_level = 125; //%
             x2 =( x2 * 100)/ monitor2_zoom_level;
@@ -68,18 +80,18 @@ public class TestKitabxana {
             //sürücü.manage().window().maximize();
 
         } catch (Exception e) {
-            System.out.println("Xəta baş verdi: " + e.getMessage());
+            System.out.println("❌Brauzeri_orta_monitora_dasi - Xəta baş verdi: " + e.getMessage());
         } finally {
 
-        }
+        }*/
     }// end func
 
     public static void MP3_oyna(String mp3_fayl_ismi) {
-        if (MP3_SES_OYNA) {
-            System.out.println("mp3_fayl_ismi = " + mp3_fayl_ismi);
+        if (MP3_SƏS_OYNA) {
+            //System.out.println("mp3_fayl_ismi = " + mp3_fayl_ismi);
             //String mp3_fayl_full_path = System.getProperty("user.dir")
             //        + "\\src\\main\\resources\\mp3\\" + mp3_fayl_ismi + ".mp3";
-            String mp3_fayl_full_path = MP3_QOVLUGU + mp3_fayl_ismi + ".mp3";
+            String mp3_fayl_full_path = MP3_QOVLUĞU + mp3_fayl_ismi + ".mp3";
 
             //System.out.println("mp3_fayl_full_path = " + mp3_fayl_full_path);
 
@@ -109,9 +121,9 @@ public class TestKitabxana {
                 // Wait for VLC to finish
                 process.waitFor();
             } catch (Exception e) {
-                System.out.println("MP3 oxunarkən xəta baş verdi: " + e.getMessage());
+                System.out.println("❌MP3 oxunarkən xəta baş verdi: " + e.getMessage());
             }
-            System.out.println("--MP3 oynatmağı tamamladı");
+            //System.out.println("--MP3 oynatmağı tamamladı");
         } // end if
     } // end func
 
@@ -188,8 +200,7 @@ public class TestKitabxana {
     }  // end fun*/
 
 
-
-    public static boolean IsElementVisibleInViewport(WebDriver driver, WebElement element) {
+    public static boolean ElementEkrandaGörünürMu(WebDriver driver, WebElement element) {
         return
                 (boolean) ((JavascriptExecutor) driver).executeScript(
                         "var elem = arguments[0], " +
@@ -212,4 +223,9 @@ public class TestKitabxana {
         System.out.println("❌ Yoxlama uğursuz");
         MP3_oyna("Yoxlama uğursuz");
     }
+
+    public static void ekran_loqunda_yaz(String mətn) {
+        System.out.println(mətn);
+    }
+
 } //class
